@@ -6,3 +6,6 @@ In this project, the goal is to create like a website similar with Ebay. Our sto
 
 ![](dbdiagram.png)
 
+### DESIGN 
+
+![img.png](img.png)
