@@ -10,6 +10,7 @@ const Layout = () => {
                     src = "/img/bubbles.png"
                     height={568.75} // Desired size with correct aspect ratio
                     width={1634.75}
+                    alt={"bubble"}
 
                 />
             </div>

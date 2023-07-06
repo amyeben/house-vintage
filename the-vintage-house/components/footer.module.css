@@ -17,6 +17,7 @@
 
 .footerText {
     text-align: center;
+    margin-top: 20px;
 }
 
 .footerText > p {
@@ -37,10 +38,10 @@
     cursor: pointer;
 }
 
-.menuColumn:nth-child(1){
+.menuColumn{
     display: flex;
     justify-content: center;
-    padding-left: 25px;
+    padding-left: 20px;
 }
 
 .menuTitle {

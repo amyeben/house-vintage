@@ -3,7 +3,7 @@ import styles from './navbar.module.css';
 import Image from 'next/image';
 import { useEffect } from 'react';
 
-const Navbar = () => {
+const NavBar = () => {
     useEffect(() => {
         const storeSpan = document.querySelector(`.${styles.store}`);
         const informationsSpan = document.querySelector(`.${styles.informations}`);
@@ -65,7 +65,7 @@ const Navbar = () => {
 
             <div className={styles.nav}>
                 <div className={styles.logoTVH}>
-                    <Image src="/../public/img/logoTVH.png" height={88} width={93.78} />
+                    <Image src="/../public/img/logoTVH.png" height={88} width={93.78} alt={"logo"}/>
                 </div>
                 <div className={styles.spanNav}>
                     <div>
@@ -92,14 +92,14 @@ const Navbar = () => {
                 </div>
                 <div className={styles.textArea}>
                     <textarea cols={5} rows={2} defaultValue={"SEARCH..."}></textarea>
-                    <Image src="/../public/img/search.png" height={24} width={24} />
+                    <Image src="/../public/img/search.png" height={24} width={24} alt={"search"}/>
                 </div>
-                <div className={styles.cart}>
-                    <Image src="/../public/img/cart 1.png" height={24} width={24} />
+                <div className={styles.login}>
+                    <button value={"LOGIN"} name={"LOGIN"}>LOGIN</button>
                 </div>
             </div>
         </>
     );
 };
 
-export default Navbar;
+export default NavBar;

@@ -9,7 +9,7 @@ const Footer = () => {
                 <div className={styles.footerDIV}>
                     <div className={styles.row1}>
                 <div className={styles.logoTVH}>
-                    <Image src="/../public/img/logoTVH.png" height={88} width={93.78} />
+                    <Image src="/../public/img/logoTVH.png" height={88} width={93.78} alt={"logo"}/>
                 </div>
 
                     <div className={styles.footerMenu}>

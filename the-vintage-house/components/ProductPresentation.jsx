@@ -18,6 +18,7 @@ const ProductPresentation = (children) => {
                   id={children.id}
                   height={100} // Desired size with correct aspect ratio
                   width={100}
+                  alt={"cards"}
 
               />
               <span className={"articleName"}> {children.articleName}</span>
