@@ -1,0 +1,132 @@
+.nav {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #FFFFFF;
+    width: 100vw;
+    height: 120px;
+    border-radius: 35px;
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    position: relative; /* Ajout */
+}
+
+.logoTVH {
+    margin-left: 40px;
+}
+
+.spanNav {
+    color: rgba(0, 0, 0, 1);
+    font-family: "Apple SD Gothic Neo";
+    text-align: center;
+    font-size: 20px;
+    font-weight: 150;
+    margin-left: 55px;
+    display: flex;
+    align-items: center;
+}
+
+.spanNav > div {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.spanNav > div > span:hover {
+    text-decoration: underline;
+    font-weight: 230;
+    cursor: pointer;
+}
+
+.textArea {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Place le texte à droite */
+    margin-right: 20px; /* Ajuste la marge selon vos besoins */
+}
+
+.textArea > textarea {
+    background-color: #ffffff;
+    width: 166px;
+    height: 25px;
+    border-radius: 6px;
+    border: none;
+    box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
+    margin-right: 10px;
+    resize: none;
+    padding-left: 3px;
+    padding: 5px;
+}
+
+.textArea > img {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.cart {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.store:hover > .subMenu {
+    display: flex;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.store,
+.informations {
+    position: relative;
+}
+
+.subMenu,
+.subMenu2 {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+    transition: display 0.5s;
+    border-radius: 35px;
+}
+
+.subMenu > span,
+.subMenu2 > span {
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.store:hover > .subMenu,
+.informations:hover > .subMenu {
+    display: flex;
+}
+
+.store:hover > .subMenu2,
+.informations:hover > .subMenu2 {
+    display: flex;
+}
+
+.subMenu > span:hover,
+.subMenu2 > span:hover {
+    text-decoration: underline;
+    font-weight: 200;
+}
+
+.login {
+    background-image:linear-gradient(130deg, rgba(190.0000038743019, 189.00000393390656, 127.00000002980232, 1) 0%,rgba(151.407633125782, 137.33601540327072, 102.10169166326523, 0.8399999737739563) 22.862915694713593%,rgba(190.0000038743019, 189.00000393390656, 127.00000002980232, 7) 100%);
+    padding: 3px 6px;
+    color: #FFFFFF;
+    border-radius: 6px;
+    box-shadow:0px 1px 14px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    padding-top: 7px;
+}
