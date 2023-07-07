@@ -1,0 +1,48 @@
+.adminproductspan {
+
+
+    display: flex;
+    flex-direction: row;
+    background-color: #FFFFFF;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    align-items: center;
+    margin: 10px;
+
+
+}
+
+.adminproductspan > span,
+.adminproductspan > img {
+    margin: 20px;
+}
+
+.adminproductspan > img {
+    border: solid 0.5px black;
+    border-radius: 12px;
+
+}
+
+
+
+.adminproductspan > button {
+    padding: 8px 16px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: "BM HANNA_TTF";
+    font-weight: 150;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+    margin-right: 20px;
+}
+
+.adminproductspan > button:hover {
+    background-color: darkred;
+
+}

@@ -15,14 +15,15 @@ export default function Sellers() {
             <NavbarSellers />
             <span className={"homeTitle"}>THE VINTAGE HOUSE</span>
             <span className={"homeDescription"}>Unlock the potential of your vintage treasures! Join our seller community and showcase your unique collection to vintage enthusiasts around the world.</span>
-            <div className={"arrows"}>
+            <div className={"arrowsSellers"}>
                 <Image src="/../public/img/arrow1.png" height={265.5} width={181.31} alt={"arrow1"}/>
                 <Image src="/../public/img/arrow2.png" height={265.5} width={181.31} alt={"arrow2"}/>
             </div>
 
 
+
         </div>
-        <FooterSellers />
+
 
 
     </>)

@@ -26,12 +26,11 @@ const FooterUser = () => {
                             </div>
                             <div className={styles.menuColumn}>
                                 <div>
-                                    <span className={styles.menuTitle}>INFORMATIONS</span>
+                                    <span className={styles.menuTitle}>PURCHASING</span>
                                 </div>
                                 <div className={styles.subMenu}>
                                     <span>AUCTIONS</span>
-                                    <span>BEST OFFER</span>
-                                    <span>BUY IT NOW</span>
+                                    <span>OFFERS</span>
                                 </div>
                             </div>
                             <div className={styles.menuColumn}>

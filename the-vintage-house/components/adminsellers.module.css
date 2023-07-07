@@ -1,0 +1,50 @@
+.adminSellerPan {
+
+
+    display: flex;
+    flex-direction: row;
+    background-color: #FFFFFF;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    align-items: center;
+    margin: 10px;
+
+
+}
+
+.adminSellerPan > span {
+    margin: 20px;
+}
+
+.flname{
+    background-image: linear-gradient(72deg, rgba(150.0000038743019, 169.00000393390656, 127.00000002980232, 1) 0%, rgba(151.407633125782, 137.33601540327072, 102.10169166326523, 0.8399999737739563) 22.862915694713593%, rgba(190.0000038743019, 189.00000393390656, 127.00000002980232, 0) 78.0773937702179%);
+    border-radius: 12px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px black;
+    margin: 20px
+
+
+}
+
+.adminSellerPan > button {
+    padding: 8px 16px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-weight: 150;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+    font-family: "BM HANNA_TTF";
+}
+
+.adminSellerPan > button:hover {
+    background-color: darkred;
+
+}

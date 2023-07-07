@@ -47,12 +47,11 @@ const NavbarSellers = () => {
                         <span>MY PRODUCT</span>
                     </div>
                     <div className={styles.informations}>
-                        <span>INFORMATIONS</span>
+                        <span>PURCHASING</span>
                     </div>
                     <div className={styles.subMenu2}>
                         <span>AUCTIONS</span>
-                        <span>BEST OFFER</span>
-                        <span>BUY IT NOW</span>
+                        <span>OFFERS</span>
                     </div>
                     <div>
                         <span>MY ACCOUNT</span>
