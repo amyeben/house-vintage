@@ -1,0 +1,73 @@
+.selleroffers {
+    flex-shrink: 0; /* Empêche les cartes de réduire leur taille */
+    height: 130px;
+    box-shadow: 0px 4px 19px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    margin: 20px 32px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 17px;
+
+}
+
+.offersTitle {
+    font-family: "BM HANNA_TTF";
+    margin: 30px;
+    font-size: 25px;
+}
+
+.of {
+    display: flex;
+}
+
+.of > div {
+    display: flex;
+    flex-direction: column;
+    align-items: first baseline;
+    margin-left: 30px;
+}
+
+.btnAR {
+    display: flex;
+    justify-content: center;
+
+}
+
+.buttonAccept {
+    padding: 8px 16px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: "BM HANNA_TTF";
+    font-weight: 150;
+    box-shadow: 0px 6px 23px rgba(0, 0, 0, 0.25);
+    margin: 5px;
+}
+
+.buttonAccept:hover {
+    background-color: darkgreen;
+}
+
+.buttonRefuse {
+    padding: 8px 16px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: "BM HANNA_TTF";
+    font-weight: 150;
+    box-shadow: 0px 6px 23px rgba(0, 0, 0, 0.25);
+    margin: 5px;}
+
+.buttonRefuse:hover {
+    background-color: darkred;
+}

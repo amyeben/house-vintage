@@ -461,18 +461,25 @@ ol, li {
   padding-bottom: 10px;
 }
 
-.productsSeller {
+.productsSeller,
+.offersSeller,
+.auctionsSeller{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-bottom: 60px;
+  margin-top: 30px;
 }
 
-.auctionsSeller {
+
+.offersSeller{
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Deux colonnes avec taille égale */
-  gap: 10px; /* Espace entre les cartes */
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
   margin-bottom: 60px;
+  margin-top: 30px;
 }
+
+
 
 

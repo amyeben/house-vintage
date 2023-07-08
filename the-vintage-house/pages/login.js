@@ -8,10 +8,12 @@ const Login = () => {
 
             <div className={styles.loginForm}>
                 <span>THE VINTAGE HOUSE</span>
+                <form>
                 <input name={"username"} type={"text"} placeholder={"USERNAME - EMAIL"} required/>
                 <input name={"password"} type={"text"} placeholder={"PASSWORD"} required/>
 
-                <button>LOGIN</button>
+                <button type={"submit"}>LOGIN</button>
+                </form>
                 <button>SIGN UP</button>
             </div>
 

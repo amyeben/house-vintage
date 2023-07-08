@@ -2,6 +2,7 @@ import Layout from "../../../../components/Layout";
 import NavbarSellers from "../../../../components/NavBarSellers";
 import Image from "next/image";
 import FooterSellers from "../../../../components/FooterSellers";
+import SellerOffers from "../../../../components/SellerOffers";
 
 const Offers = () => {
 
@@ -19,6 +20,45 @@ const Offers = () => {
                 <span>ACCEPT OR REFUSE THESE OFFERS !</span>
             </div>
             <div className={"offersSeller"}>
+                <div className="card">
+                <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
+                </div>
+                <div className="card">
+                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
+                </div>
+                <div className="card">
+                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
+                </div>
+                <div className="card">
+                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
+                </div>
+                <div className="card">
+                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
+                </div>
+                <div className="card">
+                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
+                </div>
+                <div className="card">
+                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
+                </div>
+                <div className="card">
+                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
+                </div>
+                <div className="card">
+                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
+                </div>
+                <div className="card">
+                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
+                </div>
+                <div className="card">
+                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
+                </div>
+                <div className="card">
+                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
+                </div>
+                <div className="card">
+                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
+                </div>
 
             </div>
 
