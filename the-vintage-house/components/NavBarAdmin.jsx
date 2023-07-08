@@ -8,7 +8,6 @@ const NavbarAdmin = () => {
 
     return (
         <>
-            <link href="https://fonts.googleapis.com/css?family=Apple+SD+Gothic+Neo&display=swap" rel="stylesheet" />
 
             <div className={styles.nav}>
                 <div className={styles.logoTVH}>

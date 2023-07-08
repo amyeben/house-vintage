@@ -45,6 +45,8 @@ html, body {
 .homeDescription {
   text-align: center;
   font-size: 20px;
+  margin-left: 30px ;
+  margin-right: 30px;
 }
 
 .arrows > img:nth-child(1) {
@@ -92,6 +94,7 @@ html, body {
   font-family: "BM HANNA_TTF";
   font-size: 25px;
   text-align: center;
+  margin-left: 10px;
 }
 
 fieldset {
@@ -102,17 +105,51 @@ fieldset {
 
 fieldset > p {
   text-align: center;
-  margin: 40px;
+  margin: 30px;
+}
+
+ol, li {
+  text-align: center;
+  margin: 10px;
 }
 
 .homePageCards1,
-.homePageCards2 {
+.homePageCards2{
   display: flex;
   flex-direction: row;
   overflow-x: auto;
-  whitespace: nowrap;
-  gap: 15px; /* Espacement entre les cartes */
+  white-space: nowrap;
+  gap: 15px;
   margin-bottom: 30px;
+}
+
+.storeClothingCard,
+.storeAccessoriesCard,
+.storeFootwearCard,
+.storeBooksCard,
+.storeElectronicsCard,
+.storeAuctionsCard
+{
+  display: flex;
+  flex-direction: row;
+
+
+}
+
+.fieldsetContainer {
+  overflow-x: auto;
+  width: 98%;
+  margin-bottom: 30px;
+}
+
+.fieldsetContainer > fieldset {
+  margin: 20px;
+}
+
+.scrollContainer {
+  overflow-x: auto;
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -159,6 +196,98 @@ fieldset > p {
   padding-top: 20px;
   font-family: "BM HANNA_TTF";
 }
+
+.customerMA1 {
+  background-color: #ffffff;
+  width: 320px;
+  height: 608px;
+  margin: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 23px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  font-family: "BM HANNA_TTF";
+}
+
+.customerMA2 {
+  background-color: #ffffff;
+  width: 975px;
+  height: 608px;
+  margin: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 23px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  padding: 45px;
+  font-family: "BM HANNA_TTF";
+}
+
+.sellerMA1 {
+  background-color: #ffffff;
+  width: 320px;
+  height: 608px;
+  margin: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 23px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  font-family: "BM HANNA_TTF";
+}
+
+.sellerMA2 {
+  background-color: #ffffff;
+  width: 975px;
+  height: 608px;
+  margin: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 23px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  padding: 45px;
+  font-family: "BM HANNA_TTF";
+}
+
+
+.customerMA, .sellerMA, .row {
+  display: flex;
+
+
+}
+
+.row  {
+  flex-direction: column;
+  margin: 40px;
+}
+
+.row > div {
+  margin: 20px;
+}
+
+.row > div > button {
+  padding: 8px 16px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-weight: 150;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+  font-family: "BM HANNA_TTF";
+
+}
+
+.row > div > button:hover {
+  background-color: darkred;
+
+}
+
+
 
 .carouselDiv {
   position: relative;
@@ -251,7 +380,8 @@ fieldset > p {
 
 }
 
-.divUsers > div > button {
+.divUsers > div > button,
+.productTextcontent > button{
   padding: 8px 16px;
   background-color: green;
   color: white;
@@ -266,7 +396,8 @@ fieldset > p {
   margin-bottom: 5px;
 }
 
-.divUsers > div > button:hover {
+.divUsers > div > button:hover,
+.productTextcontent > button:hover{
   background-color: darkgreen;
 
 }
@@ -313,5 +444,35 @@ fieldset > p {
   overflow-y: scroll; /* Ajout du style overflow-y pour le défilement vertical */
 }
 
+.productTextcontent {
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+.productTextcontent > span {
+  font-family: "BM HANNA_TTF";
+  font-size: 30px;
+  padding-bottom: 10px;
+}
+
+.productTextcontent > p {
+
+  padding-bottom: 10px;
+}
+
+.productsSeller {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 60px;
+}
+
+.auctionsSeller {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Deux colonnes avec taille égale */
+  gap: 10px; /* Espace entre les cartes */
+  margin-bottom: 60px;
+}
 
 

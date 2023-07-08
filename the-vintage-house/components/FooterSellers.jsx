@@ -20,7 +20,7 @@ const FooterUser = () => {
                             </div>
                             <div className={styles.menuColumn}>
                                 <div>
-                                    <span className={styles.menuTitle}>MY PRODUCT</span>
+                                    <span className={styles.menuTitle}>MY PRODUCTS</span>
                                 </div>
 
                             </div>

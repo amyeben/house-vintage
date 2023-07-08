@@ -1,0 +1,66 @@
+.cards {
+    flex-shrink: 0; /* Empêche les cartes de réduire leur taille */
+    height: 250px;
+    color: #FFFFFF;
+    box-shadow: 0px 4px 19px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    margin: 20px 32px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.imgProduct > img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 10px;
+    border-radius: 6px;
+    height: 200px;
+    width: auto;
+}
+
+.informationsProduct > span {
+    color: black;
+    display: flex;
+}
+.buttonBuy {
+    box-shadow:0px 1px 8px rgba(0, 0, 0, 0.25);
+    background-image:linear-gradient(35deg, rgba(190.0000038743019, 189.00000393390656, 127.00000002980232, 1) 0%,rgba(151.407633125782, 137.33601540327072, 102.10169166326523, 0.8399999737739563) 22.862915694713593%,rgba(190.0000038743019, 189.00000393390656, 127.00000002980232, 0) 78.0773937702179%) ;
+    border-radius:6px;
+    color: black;
+    font-weight: 200;
+    font-size: 10px;
+    padding: 4px 10px;
+}
+
+.informationsProduct > span > strong {
+    font-family: "BM HANNA_TTF";
+    padding-right: 3px;
+    padding-bottom: 7px;
+
+}
+
+.btnsProducts {
+    display: flex;
+}
+
+.btnsProducts > button{
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.25);
+    background-image: linear-gradient(80deg, rgb(190, 189, 127) 0%,rgba(151.407633125782, 137.33601540327072, 102.10169166326523, 0.8399999737739563) 22.862915694713593%,rgba(191, 189, 40, 0.47) 78.0773937702179%);
+    border-radius: 8px;
+    color: white;
+    font-weight: 400;
+    font-size: 15px;
+    padding: 9px 10px;
+    font-family: "BM HANNA_TTF";
+}
+
+.informationsProduct {
+    margin-left: 20px;
+}
+
+

@@ -33,7 +33,6 @@ const NavbarSellers = () => {
 
     return (
         <>
-            <link href="https://fonts.googleapis.com/css?family=Apple+SD+Gothic+Neo&display=swap" rel="stylesheet" />
 
             <div className={styles.nav}>
                 <div className={styles.logoTVH}>
@@ -44,7 +43,7 @@ const NavbarSellers = () => {
                         <span>HOME</span>
                     </div>
                     <div>
-                        <span>MY PRODUCT</span>
+                        <span>MY PRODUCTS</span>
                     </div>
                     <div className={styles.informations}>
                         <span>PURCHASING</span>
