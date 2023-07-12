@@ -5,27 +5,8 @@ header("Access-Control-Allow-Origin: http://localhost:3000/login");
 header("Access-Control-Allow-Headers: POST");
 header("Access-Control-Allow-Methods: Content-Type");
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "the_vintage_house";
-$dbhost = 8888;
-
-// Créez une nouvelle connexion
-$conn = new mysqli($servername, $username, $password, $dbname, $dbhost);
-
-// Vérifiez la connexion
-if ($conn->connect_error) {
-    die("Échec de la connexion à la base de données : " . $conn->connect_error);
-
-
-}
-
+include 'db_connection.php';
 // LOGIN
-
-
-
-
 
 // Vérifier si l'utilisateur a soumis le formulaire de connexion
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

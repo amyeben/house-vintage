@@ -16,7 +16,7 @@ const Store = () => {
         const userType = sessionStorage.getItem('user_type');
 
         if (!userType || (expirationTime && Date.now() > parseInt(expirationTime))) {
-            router.push('/store');
+            router.push('/stores');
         } else {
             switch (userType) {
                 case 'customer':

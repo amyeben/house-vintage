@@ -89,7 +89,7 @@ const Login = () => {
 
                     <button onClick={handleSubmit} type={"submit"}>LOGIN</button>
                 </form>
-                <a href="/subscribe">
+                <a href="/suscribe">
                     <button>SIGN UP</button>
                 </a>
             </div>
