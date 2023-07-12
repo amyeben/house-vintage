@@ -2,8 +2,42 @@ import Layout from "../../../../components/Layout";
 import NavbarUser from "../../../../components/NavBarUser";
 import Image from "next/image";
 import FooterUser from "../../../../components/FooterUser";
+import {useEffect} from "react";
+import {useRouter} from "next/dist/client/compat/router";
 
 const InformationsCustomer = () => {
+
+    const router = useRouter();
+
+    useEffect(() => {
+        const expirationTime = sessionStorage.getItem('expiration_time');
+        const userType = sessionStorage.getItem('user_type');
+
+        if (!userType || (expirationTime && Date.now() > parseInt(expirationTime))) {
+
+            router.push('/login');
+        } else {
+            switch (userType) {
+                case 'customer':
+
+                    router.push('/posts/customer/informations');
+                    break;
+                case 'seller':
+
+                    router.push('/posts/sellers');
+                    break;
+                case 'admin':
+
+                    router.push('/posts/admin');
+                    break;
+                default:
+
+                    router.push('/error');
+                    break;
+            }
+        }
+    }, []);
+
 
     return (
         <>
@@ -17,7 +51,7 @@ const InformationsCustomer = () => {
                     <Image src="/../public/img/arrow2.png" height={265.5} width={181.31} alt={"arrow2"}/>
                 </div>
                 <fieldset>
-                    <legend>AUCTIONS</legend>
+                    <legend id={"auctions"}>AUCTIONS</legend>
                     <p>In the "Auctions" category, you can participate in bidding for unique items within a specific timeframe. For example, from Monday, April 19, 2021, at 9:00 a.m. to Friday, April 23, 2021, at 4:59 p.m. To bid on an item, follow these steps:</p>
                         <ol>
                             <li>Click on the bid button to express your interest in a particular item.</li>
@@ -25,11 +59,11 @@ const InformationsCustomer = () => {
                             <li>If your maximum bid exceeds the current highest bid, we will automatically place incremental bids until you become the highest bidder. Please note that you will only pay the final winning bid amount.</li></ol>
                 </fieldset>
                 <fieldset>
-                    <legend>BUY IT KNOW</legend>
+                    <legend id={"buyitnow"}>BUY IT NOW</legend>
                     <p>In the "Buy it now" category, there is no auction involved. You can purchase the item immediately at the listed price without the need to bid. This is the most convenient way to buy, as you can secure the item instantly.</p>
                 </fieldset>
                 <fieldset>
-                    <legend>BEST OFFER</legend>
+                    <legend id={"bestoffer"}>BEST OFFER</legend>
                     <p>In the "Best Offer" category, you can electronically negotiate with the seller via the The Vintage House website. You have the opportunity to propose your best offer and negotiate the final price of an item. The negotiation process works as follows:</p>
                         <ol>
                             <li>You make an offer to the seller and wait for their response.</li>

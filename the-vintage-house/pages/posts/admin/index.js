@@ -1,17 +1,20 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import NavbarAdmin from "../../../components/NavBarAdmin";
 import Layout from "../../../components/Layout";
 import Image from "next/image";
 import AdminCustomerPan from "../../../components/AdminCustomerPan";
 import AdminSellersPan from "../../../components/AdminSellersPan";
 import AdminProductsPan from "../../../components/AdminProductsPan";
+import {useRouter} from "next/dist/client/compat/router";
 
 export default function Admin() {
+
     const [activeDiv, setActiveDiv] = useState("divAdminCustomer");
 
     const handleClick = (divName) => {
         setActiveDiv(divName);
     };
+
 
     return (
         <>

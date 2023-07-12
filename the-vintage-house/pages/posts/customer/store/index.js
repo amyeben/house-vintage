@@ -4,8 +4,37 @@ import Image from "next/image";
 import ProductPresentation from "../../../../components/ProductPresentation";
 import FooterUser from "../../../../components/FooterUser";
 import ProductPresentationAuction from "../../../../components/ProductPresentationAuction";
+import {useEffect} from "react";
+import {useRouter} from "next/dist/client/compat/router";
 
 const Store = () => {
+    const router = useRouter();
+
+    useEffect(() => {
+        const expirationTime = sessionStorage.getItem('expiration_time');
+        const userType = sessionStorage.getItem('user_type');
+
+        if (!userType || (expirationTime && Date.now() > parseInt(expirationTime))) {
+            router.push('/login');
+        } else {
+            switch (userType) {
+                case 'customer':
+                    router.push('/posts/customer/store');
+                    break;
+                case 'seller':
+                    router.push('/posts/sellers');
+                    break;
+                case 'admin':
+                    router.push('/posts/admin');
+                    break;
+                default:
+                    router.push('/error');
+                    break;
+            }
+        }
+    }, []);
+
+
   return(
       <>
           <div className={"main-content"}>
@@ -19,7 +48,7 @@ const Store = () => {
               </div>
               <div className="fieldsetContainer">
                   <fieldset>
-                      <legend>#AUCTIONS</legend>
+                      <legend id={"auctions"}>#AUCTIONS</legend>
                       <p>FROM XX/XX/XXXX TO XX/XX/XXXX</p>
                       <div className={"storeAuctionsCard"}>
                           <ProductPresentationAuction srcImage={"/../public/img/imgElectronics/camera.png"} id={1} articleName={"Article 1"} articlePrice={"34£"} />
@@ -31,7 +60,7 @@ const Store = () => {
                   </fieldset></div>
               <div className="fieldsetContainer">
               <fieldset>
-                  <legend>#CLOTHING</legend>
+                  <legend id={"clothing"}>#CLOTHING</legend>
                   <div className={"storeClothingCard"}>
                       <ProductPresentation srcImage={"/../public/img/imgClothing/imgJacket/jacket1.webp"} id={1} articleName={"Article 1"} articlePrice={"34£"} />
                       <ProductPresentation srcImage={"/../public/img/imgClothing/imgJacket/jacket2.webp"} id={1} articleName={"Article 2"} articlePrice={"34£"} />
@@ -48,7 +77,7 @@ const Store = () => {
 
               <div className="fieldsetContainer">
               <fieldset>
-                  <legend>#ACCESSORIES</legend>
+                  <legend id={"accessories"}>#ACCESSORIES</legend>
                   <div className={"storeAccessoriesCard"}>
                       <ProductPresentation srcImage={"/../public/img/imgAccessories/necklace1.webp"} id={1} articleName={"Article 1"} articlePrice={"34£"} />
                       <ProductPresentation srcImage={"/../public/img/imgAccessories/necklace2.webp"} id={1} articleName={"Article 2"} articlePrice={"34£"} />
@@ -59,7 +88,7 @@ const Store = () => {
               </fieldset></div>
               <div className="fieldsetContainer">
               <fieldset>
-                  <legend>#FOOTWEAR</legend>
+                  <legend id={"footwear"}>#FOOTWEAR</legend>
                   <div className={"storeFootwearCard"}>
                       <ProductPresentation srcImage={"/../public/img/imgFootwear/fw1.webp"} id={1} articleName={"Article 1"} articlePrice={"34£"} />
                       <ProductPresentation srcImage={"/../public/img/imgFootwear/fw2.png"} id={1} articleName={"Article 2"} articlePrice={"34£"} />
@@ -70,7 +99,7 @@ const Store = () => {
               </fieldset></div>
               <div className="fieldsetContainer">
               <fieldset>
-                  <legend>#BOOKS AND MAGASINES</legend>
+                  <legend id={"books"}>#BOOKS AND MAGASINES</legend>
                   <div className={"storeBooksCard"}>
                       <ProductPresentation srcImage={"/../public/img/imgBooksAndMagasine/book1.png"} id={1} articleName={"Article 1"} articlePrice={"34£"} />
                       <ProductPresentation srcImage={"/../public/img/imgBooksAndMagasine/book2.png"} id={1} articleName={"Article 2"} articlePrice={"34£"} />
@@ -81,7 +110,7 @@ const Store = () => {
               </fieldset></div>
               <div className="fieldsetContainer">
               <fieldset>
-                  <legend>#ELECTRONICS</legend>
+                  <legend id={"electronics"}>#ELECTRONICS</legend>
                   <div className={"storeElectronicsCard"}>
                       <ProductPresentation srcImage={"/../public/img/imgElectronics/camera.png"} id={1} articleName={"Article 1"} articlePrice={"34£"} />
                       <ProductPresentation srcImage={"/../public/img/imgElectronics/console.webp"} id={1} articleName={"Article 2"} articlePrice={"34£"} />

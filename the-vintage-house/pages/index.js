@@ -1,14 +1,10 @@
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import NavBar from "../components/NavBar";
-import NavBarUser from "../components/NavBarUser";
-import NavBarAdmin from "../components/NavBarAdmin";
-import NavBarSellers from "../components/NavBarSellers"
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import ProductPresentation from "../components/ProductPresentation";
 import SummerDiscount from "../components/SummerDiscount";
-import {Head} from "next/document";
 
 const inter = Inter({ subsets: ['latin'] })
 

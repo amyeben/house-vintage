@@ -4,6 +4,21 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 
 const NavbarUser = () => {
+
+    const logout = () => {
+        // Supprimer les informations de session
+        sessionStorage.removeItem('user_type');
+        sessionStorage.removeItem('expiration_time');
+
+        // Rediriger l'utilisateur vers la page de connexion ou une autre page appropriée
+        window.location.href = '/login';
+    };
+
+    const handleLogout = () => {
+        // Appeler la fonction de déconnexion
+        logout();
+    };
+
     useEffect(() => {
         const storeSpan = document.querySelector(`.${styles.store}`);
         const informationsSpan = document.querySelector(`.${styles.informations}`);
@@ -64,40 +79,58 @@ const NavbarUser = () => {
 
             <div className={styles.nav}>
                 <div className={styles.logoTVH}>
-                    <Image src="/../public/img/logoTVH.png" height={88} width={93.78} alt={"logo"}/>
+                    <a href={"/posts/customer"}>
+                        <Image src="/../public/img/logoTVH.png" height={88} width={93.78} alt={"logo"}/></a>
                 </div>
                 <div className={styles.spanNav}>
                     <div>
-                        <span>HOME</span>
+                        <a href={"/posts/customer"}>
+                            <span>HOME</span></a>
                     </div>
                     <div className={styles.store}>
-                        <span>STORE</span>
+                        <a href={"/posts/customer/store"}>
+                            <span>STORE</span></a>
                     </div>
                     <div className={styles.subMenu}>
-                        <span>CLOTHING</span>
-                        <span>ACCESSORIES</span>
-                        <span>FOOTWEAR</span>
-                        <span>BOOKS AND MAGAZINES</span>
-                        <span>ELECTRONICS</span>
+                        <a href={"/posts/customer/store#clothing"}>
+                            <span>CLOTHING</span></a>
+                        <a href={"/posts/customer/store#accessories"}>
+                            <span>ACCESSORIES</span></a>
+                        <a href={"/posts/customer/store#footwear"}>
+                            <span>FOOTWEAR</span></a>
+                        <a href={"/posts/customer/store#books"}>
+                            <span>BOOKS AND MAGAZINES</span></a>
+                        <a href={"/posts/customer/store#electronics"}>
+                            <span>ELECTRONICS</span></a>
                     </div>
                     <div className={styles.informations}>
-                        <span>INFORMATIONS</span>
+                        <a href={"/posts/customer/informations"}>
+                            <span>INFORMATIONS</span></a>
                     </div>
                     <div className={styles.subMenu2}>
-                        <span>AUCTIONS</span>
-                        <span>BEST OFFER</span>
-                        <span>BUY IT NOW</span>
+                        <a href={"/posts/customer/informations#auctions"}>
+                            <span>AUCTIONS</span></a>
+                        <a href={"/posts/customer/informations#bestoffer"}>
+                            <span>BEST OFFER</span></a>
+                        <a href={"/posts/customer/informations#buyitnow"}>
+                            <span>BUY IT NOW</span></a>
                     </div>
                     <div>
-                        <span>MY ACCOUNT</span>
+                        <a href={"/posts/customer/myaccount"}>
+                            <span>MY ACCOUNT</span></a>
                     </div>
                 </div>
                 <div className={styles.textArea}>
                     <textarea cols={5} rows={2} defaultValue={"SEARCH..."}></textarea>
-                    <Image src="/../public/img/search.png" height={24} width={24} alt={"search"}/>
+                    <a href={"/posts/customer"}>
+                        <Image src="/../public/img/search.png" height={24} width={24} alt={"search"}/></a>
                 </div>
                 <div className={styles.cart}>
-                    <Image src="/../public/img/cart 1.png" height={24} width={24} alt={"cart"}/>
+                    <a href={"/posts/customer"}>
+                        <Image src="/../public/img/cart 1.png" height={24} width={24} alt={"cart"}/></a>
+                </div>
+                <div className={styles.login}>
+                    <button value={"LOG OUT"} name={"logout"} onClick={handleLogout}>LOG OUT</button>
                 </div>
 
             </div>

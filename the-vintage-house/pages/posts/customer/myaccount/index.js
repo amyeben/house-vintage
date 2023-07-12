@@ -1,8 +1,37 @@
 import Layout from "../../../../components/Layout";
 import NavbarUser from "../../../../components/NavBarUser";
 import Image from "next/image";
+import {useEffect} from "react";
+import {useRouter} from "next/dist/client/compat/router";
 
 const MyaccountUser = () => {
+
+    const router = useRouter();
+
+    useEffect(() => {
+        const expirationTime = sessionStorage.getItem('expiration_time');
+        const userType = sessionStorage.getItem('user_type');
+
+        if (!userType || (expirationTime && Date.now() > parseInt(expirationTime))) {
+            router.push('/login');
+        } else {
+            switch (userType) {
+                case 'customer':
+                    router.push('/posts/customer/myaccount');
+                    break;
+                case 'seller':
+                    router.push('/posts/sellers');
+                    break;
+                case 'admin':
+                    router.push('/posts/admin');
+                    break;
+                default:
+                    router.push('/error');
+                    break;
+            }
+        }
+    }, []);
+
     return (
         <>
             <div className={"main-content"}>

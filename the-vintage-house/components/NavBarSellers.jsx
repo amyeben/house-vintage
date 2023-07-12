@@ -4,6 +4,21 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 
 const NavbarSellers = () => {
+
+    const logout = () => {
+        // Supprimer les informations de session
+        sessionStorage.removeItem('user_type');
+        sessionStorage.removeItem('expiration_time');
+
+        // Rediriger l'utilisateur vers la page de connexion ou une autre page appropriée
+        window.location.href = '/login';
+    };
+
+    const handleLogout = () => {
+        // Appeler la fonction de déconnexion
+        logout();
+    };
+
     useEffect(() => {
         const informationsSpan = document.querySelector(`.${styles.informations}`);
         const subMenu2 = document.querySelector(`.${styles.subMenu2}`);
@@ -36,29 +51,42 @@ const NavbarSellers = () => {
 
             <div className={styles.nav}>
                 <div className={styles.logoTVH}>
-                    <Image src="/../public/img/logoTVH.png" height={88} width={93.78} alt={"logo"}/>
+                    <a href={"/posts/sellers"}>
+                        <Image src="/../public/img/logoTVH.png" height={88} width={93.78} alt={"logo"}/>
+                    </a>
                 </div>
                 <div className={styles.spanNav}>
                     <div>
-                        <span>HOME</span>
+                        <a href={"/posts/sellers"}>
+                            <span>HOME</span></a>
                     </div>
                     <div>
-                        <span>MY PRODUCTS</span>
+                        <a href={"/posts/sellers/products"}>
+                            <span>MY PRODUCTS</span></a>
                     </div>
                     <div className={styles.informations}>
-                        <span>PURCHASING</span>
+                        <a href={"/posts/sellers/purchasing"}>
+                            <span>PURCHASING</span></a>
                     </div>
                     <div className={styles.subMenu2}>
-                        <span>AUCTIONS</span>
-                        <span>OFFERS</span>
+                        <a href={"/posts/sellers/purchasing/auctions"}>
+                            <span>AUCTIONS</span></a>
+                        <a href={"/posts/sellers/purchasing/offers"}>
+                            <span>OFFERS</span></a>
                     </div>
                     <div>
-                        <span>MY ACCOUNT</span>
+                        <a href={"/posts/sellers/myaccount"}>
+                            <span>MY ACCOUNT</span></a>
                     </div>
                 </div>
                 <div className={styles.textArea}>
                     <textarea cols={5} rows={2} defaultValue={"SEARCH..."}></textarea>
+                    <a href={"/posts/sellers"}>
                     <Image src="/../public/img/search.png" height={24} width={24} alt={"search"}/>
+                    </a>
+                </div>
+                <div className={styles.login}>
+                    <button value={"LOG OUT"} name={"logout"} onClick={handleLogout}>LOG OUT</button>
                 </div>
 
             </div>

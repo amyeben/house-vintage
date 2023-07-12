@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styles from './navbar.module.css';
 import Image from 'next/image';
 import { useEffect } from 'react';
@@ -64,37 +63,51 @@ const NavBar = () => {
 
             <div className={styles.nav}>
                 <div className={styles.logoTVH}>
+                    <a href={"/"}>
                     <Image src="/../public/img/logoTVH.png" height={88} width={93.78} alt={"logo"}/>
+                    </a>
                 </div>
                 <div className={styles.spanNav}>
                     <div>
-                        <span>HOME</span>
+                        <a href={"/"}>
+                            <span>HOME</span></a>
                     </div>
                     <div className={styles.store}>
-                        <span>STORE</span>
+                        <a href={"/stores"}>
+                            <span>STORE</span></a>
                     </div>
                     <div className={styles.subMenu}>
-                        <span>CLOTHING</span>
-                        <span>ACCESSORIES</span>
-                        <span>FOOTWEAR</span>
-                        <span>BOOKS AND MAGAZINES</span>
-                        <span>ELECTRONICS</span>
+                        <a href={"/stores#clothing"}>
+                            <span>CLOTHING</span></a>
+                        <a href={"/stores#accessories"}>
+                            <span>ACCESSORIES</span></a>
+                        <a href={"/stores#footwear"}>
+                            <span>FOOTWEAR</span></a>
+                        <a href={"/stores#books"}>
+                            <span>BOOKS AND MAGAZINES</span></a>
+                        <a href={"/stores#electronics"}>
+                            <span>ELECTRONICS</span></a>
                     </div>
                     <div className={styles.informations}>
-                        <span>INFORMATIONS</span>
+                        <a href={"/informations"}>
+                            <span>INFORMATIONS</span></a>
                     </div>
                     <div className={styles.subMenu2}>
-                        <span>AUCTIONS</span>
-                        <span>BEST OFFER</span>
-                        <span>BUY IT NOW</span>
+                        <a href={"/informations#auctions"}>
+                            <span>AUCTIONS</span></a>
+                        <a href={"/informations#bestoffer"}>
+                            <span>BEST OFFER</span></a>
+                        <a href={"/informations#buyitnow"}>
+                            <span>BUY IT NOW</span></a>
                     </div>
                 </div>
                 <div className={styles.textArea}>
                     <textarea cols={5} rows={2} defaultValue={"SEARCH..."}></textarea>
-                    <Image src="/../public/img/search.png" height={24} width={24} alt={"search"}/>
+                    <a href={"/"}>
+                        <Image src="/../public/img/search.png" height={24} width={24} alt={"search"}/></a>
                 </div>
                 <div className={styles.login}>
-                    <button value={"LOGIN"} name={"LOGIN"}>LOGIN</button>
+                    <a href={"/login"}><button value={"LOGIN"} name={"LOGIN"}>LOGIN</button></a>
                 </div>
             </div>
         </>

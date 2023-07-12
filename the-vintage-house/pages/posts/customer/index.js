@@ -5,8 +5,38 @@ import Image from "next/image";
 import ProductPresentation from "../../../components/ProductPresentation";
 import SummerDiscount from "../../../components/SummerDiscount";
 import NavbarUser from "../../../components/NavBarUser";
+import {useEffect} from "react";
+import {useRouter} from "next/dist/client/compat/router";
 
 export default function Customer() {
+
+    const router = useRouter();
+
+    useEffect(() => {
+        const expirationTime = sessionStorage.getItem('expiration_time');
+        const userType = sessionStorage.getItem('user_type');
+
+        if (!userType || (expirationTime && Date.now() > parseInt(expirationTime))) {
+            router.push('/login');
+        } else {
+            switch (userType) {
+                case 'customer':
+                    router.push('/posts/customer');
+                    break;
+                case 'seller':
+                    router.push('/posts/sellers');
+                    break;
+                case 'admin':
+                    router.push('/posts/admin');
+                    break;
+                default:
+                    router.push('/error');
+                    break;
+            }
+        }
+    }, []);
+
+
 
     return (<>
 

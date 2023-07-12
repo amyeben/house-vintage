@@ -31,7 +31,7 @@
     padding-right: 20px;
 }
 
-.spanNav > div > span:hover {
+.spanNav > div > a > span:hover {
     text-decoration: underline;
     font-weight: 230;
     cursor: pointer;
@@ -57,7 +57,7 @@
     padding: 5px;
 }
 
-.textArea > img {
+.textArea > a > img {
     margin-right: 10px;
     cursor: pointer;
 }
@@ -95,8 +95,8 @@
     border-radius: 35px;
 }
 
-.subMenu > span,
-.subMenu2 > span {
+.subMenu > a > span,
+.subMenu2 > a > span {
     margin-bottom: 5px;
     cursor: pointer;
 }
@@ -111,8 +111,8 @@
     display: flex;
 }
 
-.subMenu > span:hover,
-.subMenu2 > span:hover {
+.subMenu > a > span:hover,
+.subMenu2 > a > span:hover {
     text-decoration: underline;
     font-weight: 200;
 }

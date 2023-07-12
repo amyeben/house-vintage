@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "next-images": "^1.8.5"
+    "cors": "^2.8.5",
+    "next-images": "^1.8.5",
+    "next-iron-session": "^4.2.0"
   }
 }
