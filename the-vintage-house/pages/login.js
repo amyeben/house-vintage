@@ -14,7 +14,7 @@ const Login = () => {
         console.log(data);
 
         if (!email || !password) {
-            console.log('Veuillez remplir tous les champs');
+            console.log('Veuillez remplir tous les champs !!');
             return;
         }
 
