@@ -1,4 +1,4 @@
-import styles from '../styles/login.module.css'
+import styles from '../../styles/login.module.css'
 import Image from "next/image";
 import {useState} from "react";
 import axios from "axios";
@@ -10,10 +10,11 @@ const Suscribe = () => {
     const [address, setAddress] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [user, setUser] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const data = { firstName, lastName, address, username, password};
+        const data = { firstName, lastName, address, username, password, user};
         //const dataPost = JSON.stringify(data);
         console.log(data);
 
@@ -32,7 +33,9 @@ const Suscribe = () => {
             const responseData = response.data;
 
             if (responseData["success"] !== false) {
-                console.log("USER ADD SUCCESSFULLY")
+                console.log(responseData);
+                console.log("USER ADD SUCCESSFULLY");
+                window.location.href = '/login';
 
 
             } else {
@@ -49,6 +52,8 @@ const Suscribe = () => {
         }
     };
 
+
+
     return(
         <>
 
@@ -62,9 +67,28 @@ const Suscribe = () => {
                     <input name={"address"} value={address} onChange={(e) => setAddress(e.target.value)} type={"text"} placeholder={"ADDRESS"} required/>
                     <input name={"username"} value={username} onChange={(e) => setUsername(e.target.value)} type={"text"} placeholder={"USERNAME - EMAIL"} required/>
                     <input name={"password"} value={password} onChange={(e) => setPassword(e.target.value)} type={"text"} placeholder={"PASSWORD"} required/>
-
-                    <button type={"submit"}>SIGN UP</button>
+                    <div className={styles.radioButton}>
+                        <input
+                            type="radio"
+                            value="SELLER"
+                            name="usertype"
+                            checked={user === "SELLER"}
+                            onChange={(e) => setUser(e.target.value)}
+                        />{" "}
+                        SELLER
+                        <input
+                            type="radio"
+                            value="CUSTOMER"
+                            name="usertype"
+                            checked={user === "CUSTOMER"}
+                            onChange={(e) => setUser(e.target.value)}
+                        />{" "}
+                        CUSTOMER
+                    </div>
+                    <button onClick={handleSubmit} type={"submit"}>SIGN UP</button>
                 </form>
+                    <a href={"/login"}><button className={styles.buttonARD}>ALREADY AN ACCOUNT</button></a>
+
 
             </div>
 

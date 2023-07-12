@@ -1,6 +1,7 @@
 import styles from './adminproductspan.module.css'
 import Image from "next/image";
 
+
 const AdminProductsPan = (children) => {
 
     return(<>
@@ -16,7 +17,7 @@ const AdminProductsPan = (children) => {
                 />
                 <span>NAME OF THE PRODUCT: {children.nameProduct}</span>
                 <span>DATE OF CREATION: {children.creationDate}</span>
-                <button>DELETE</button>
+                <button onClick={children.onDelete}>DELETE</button>
             </div>
         </>
 

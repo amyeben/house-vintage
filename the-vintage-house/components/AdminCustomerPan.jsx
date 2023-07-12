@@ -11,7 +11,7 @@ const AdminCustomerPan = (children) => {
             <span>E-MAIL: {children.email}</span>
             <span>PURCHASES: {children.purchases}</span>
             <span>OFFERS: {children.offers}</span>
-            <button>DELETE</button>
+            <button onClick={children.onDelete}>DELETE</button>
         </div>
         </>
 

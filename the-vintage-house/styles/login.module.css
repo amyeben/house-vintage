@@ -134,7 +134,8 @@
 
 }
 
-.suscribeForm > form > button {
+.suscribeForm > form > button,
+.buttonARD {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,11 +150,13 @@
     margin-top: 8px;
 }
 
-.suscribeForm > form > button:hover {
+.suscribeForm > form > button:hover,
+.buttonARD:hover{
     box-shadow:0px 1px 14px rgba(0, 0, 0, 0.5);
     font-weight: 250;
 
 }
+
 
 
 .name {
@@ -183,3 +186,6 @@
     flex-direction: column;
 }
 
+.radioButton > input{
+    margin: 26px 18px;
+}
