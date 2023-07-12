@@ -2,9 +2,36 @@ import Layout from "../../components/Layout";
 import Image from "next/image";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
+import {useRouter} from "next/dist/client/compat/router";
+import {useEffect} from "react";
 
 const Informations = () => {
 
+    const router = useRouter();
+
+    useEffect(() => {
+        const expirationTime = sessionStorage.getItem('expiration_time');
+        const userType = sessionStorage.getItem('user_type');
+
+        if (!userType || (expirationTime && Date.now() > parseInt(expirationTime))) {
+            router.push('/informations');
+        } else {
+            switch (userType) {
+                case 'customer':
+                    router.push('/posts/customer');
+                    break;
+                case 'seller':
+                    router.push('/posts/sellers');
+                    break;
+                case 'admin':
+                    router.push('/posts/admin');
+                    break;
+                default:
+                    router.push('/error');
+                    break;
+            }
+        }
+    }, []);
 
     return (
         <>

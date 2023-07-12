@@ -5,11 +5,39 @@ import Layout from "../components/Layout";
 import Footer from "../components/Footer";
 import ProductPresentation from "../components/ProductPresentation";
 import SummerDiscount from "../components/SummerDiscount";
+import {useRouter} from "next/dist/client/compat/router";
+import {useEffect} from "react";
 
 const inter = Inter({ subsets: ['latin'] })
 
 
 export default function Home() {
+
+    const router = useRouter();
+
+    useEffect(() => {
+        const expirationTime = sessionStorage.getItem('expiration_time');
+        const userType = sessionStorage.getItem('user_type');
+
+        if (!userType || (expirationTime && Date.now() > parseInt(expirationTime))) {
+            router.push('/');
+        } else {
+            switch (userType) {
+                case 'customer':
+                    router.push('/posts/customer');
+                    break;
+                case 'seller':
+                    router.push('/posts/sellers');
+                    break;
+                case 'admin':
+                    router.push('/posts/admin');
+                    break;
+                default:
+                    router.push('/error');
+                    break;
+            }
+        }
+    }, []);
   return (<>
 
       <div className={"main-content"}>

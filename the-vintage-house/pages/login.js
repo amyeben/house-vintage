@@ -19,7 +19,7 @@ const Login = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:8888/api/login', { email, password });
+            const response = await axios.post('http://localhost:8888/login.php', { email, password });
 
             if (response.status !== 200) {
                 throw new Error('Erreur lors de la requête.');
