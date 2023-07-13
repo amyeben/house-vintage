@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./additemform.module.css"; // Import CSS module for styling
 
-const AddCustomerForm = ({ onAddCustomer, onClose }) => {
+const AddSellersForm = ({ onAddSeller, onClose }) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [address, setAddress] = useState("");
@@ -10,16 +10,16 @@ const AddCustomerForm = ({ onAddCustomer, onClose }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Create a new customer object with form values
-        const newCustomer = {
+        // Create a new seller object with form values
+        const newSeller = {
             firstName,
             lastName,
             address,
             username,
             password,
         };
-        // Call the onAddCustomer function with the new customer
-        onAddCustomer(newCustomer);
+        // Call the onAddSeller function with the new seller
+        onAddSeller(newSeller);
         // Clear the form fields
         setFirstName("");
         setLastName("");
@@ -36,7 +36,7 @@ const AddCustomerForm = ({ onAddCustomer, onClose }) => {
                     <button className={styles.closeButton} onClick={onClose}>
                         X
                     </button>
-                    <h2>Add a Customer</h2>
+                    <h2>Add a Seller</h2>
                     <div className={styles.formGroup}>
                         <label htmlFor="firstName">First Name: </label>
                         <input
@@ -89,4 +89,4 @@ const AddCustomerForm = ({ onAddCustomer, onClose }) => {
     );
 };
 
-export default AddCustomerForm;
+export default AddSellersForm;

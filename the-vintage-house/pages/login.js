@@ -33,6 +33,7 @@ const Login = () => {
                 const expirationTime = Date.now() + sessionDuration;
 
                 sessionStorage.setItem('user_type', responseData.user_type);
+                sessionStorage.setItem('user_id', responseData.user_id);
                 sessionStorage.setItem('expiration_time', expirationTime);
 
                 // Rediriger l'utilisateur en fonction du type

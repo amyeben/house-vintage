@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import styles from "./additemform.module.css"; // Import CSS module for styling
+import styles from "./additemform.module.css";
+import axios from "axios"; // Import CSS module for styling
 
 const AddItemForm = ({ onAddItem, onClose }) => {
     const [category, setCategory] = useState("");
@@ -7,8 +8,9 @@ const AddItemForm = ({ onAddItem, onClose }) => {
     const [description, setDescription] = useState("");
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
+    const userId = sessionStorage.getItem('user_id');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // Create a new item object with form values
         const newItem = {
@@ -17,7 +19,29 @@ const AddItemForm = ({ onAddItem, onClose }) => {
             description,
             name,
             price,
+            userId
         };
+
+
+        try {
+            const response = await axios.post('http://localhost:8888/add_items.php', newItem);
+
+            if (response.status !== 200) {
+                throw new Error('Erreur lors de la requête.');
+            }
+
+            const responseData = response.data;
+            console.log(responseData);
+
+        } catch (error) {
+            console.log(error);
+            const errorMessage = "Une erreur s'est produite lors de la requête.";
+            const errorResponse = {
+                success: false,
+                message: errorMessage
+            };
+            console.log(errorResponse);
+        }
         // Call the onAddItem function with the new item
         onAddItem(newItem);
         // Clear the form fields
@@ -32,7 +56,7 @@ const AddItemForm = ({ onAddItem, onClose }) => {
         <div className={styles.formWrapper}>
             <div className={styles.overlay} onClick={onClose}></div>
             <div className={styles.formContainer}>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} method={"POST"}>
                 <button className={styles.closeButton} onClick={onClose}>
                     X
                 </button>
@@ -42,6 +66,7 @@ const AddItemForm = ({ onAddItem, onClose }) => {
                     <input
                         type="text"
                         id="name"
+                        name={"name"}
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
@@ -50,6 +75,7 @@ const AddItemForm = ({ onAddItem, onClose }) => {
                     <label htmlFor="description">Description: </label>
                     <textarea
                         id="description"
+                        name={"descrition"}
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     ></textarea>
@@ -57,8 +83,9 @@ const AddItemForm = ({ onAddItem, onClose }) => {
                 <div className={styles.formGroup}>
                     <label htmlFor="price">Price: </label>
                     <input
-                        type="text"
+                        type="number"
                         id="price"
+                        name={"price"}
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
                     />
@@ -68,6 +95,7 @@ const AddItemForm = ({ onAddItem, onClose }) => {
                         <label htmlFor="category">Category: </label>
                         <select
                             id="category"
+                            name={"category"}
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
                         >
@@ -84,6 +112,7 @@ const AddItemForm = ({ onAddItem, onClose }) => {
                         <input
                             type="text"
                             id="image"
+                            name={"image"}
                             value={image}
                             onChange={(e) => setImage(e.target.value)}
                         />

@@ -5,17 +5,19 @@ import Image from "next/image";
 import AdminCustomerPan from "../../../components/AdminCustomerPan";
 import AdminSellersPan from "../../../components/AdminSellersPan";
 import AdminProductsPan from "../../../components/AdminProductsPan";
-import { useRouter } from "next/router";
+import AddItemForm from "../../../components/AddItemForm";
+import AddCustomerForm from "../../../components/AddCustomerForm";
+import AddSellersForm from "../../../components/AddSellersForm";
 import axios from "axios";
-import AddItemForm from "../../../components/AddItemForm"; // Import the AddItemForm component
 
 export default function Admin() {
     const [activeDiv, setActiveDiv] = useState("divAdminCustomer");
     const [users, setUsers] = useState([]);
     const [sellers, setSellers] = useState([]);
     const [items, setItems] = useState([]);
-    const [customer, setCustomer] = useState([]);
-    const [showAddItemForm, setShowAddItemForm] = useState(false); // State to control the visibility of AddItemForm
+    const [showAddItemForm, setShowAddItemForm] = useState(false);
+    const [showAddCustomerForm, setShowAddCustomerForm] = useState(false);
+    const [showAddSellerForm, setShowAddSellerForm] = useState(false);
 
     const handleClick = (divName) => {
         setActiveDiv(divName);
@@ -33,7 +35,7 @@ export default function Admin() {
     const handleDeleteCustomer = async (customerId) => {
         try {
             await axios.delete(`http://localhost:8888/delete_customers.php?id=${customerId}`);
-            setCustomer((prevCustomers) => prevCustomers.filter((customer) => customer.id !== customerId));
+            setUsers((prevUsers) => prevUsers.filter((user) => user.id !== customerId));
         } catch (error) {
             console.error("An error occurred while deleting the customer:", error);
         }
@@ -79,9 +81,37 @@ export default function Admin() {
             //setItems(responseItems.data);
             // Hide the AddItemForm
             //setShowAddItemForm(false);
-            console.log("yesssss")
+            console.log("yesssss");
         } catch (error) {
             console.error("An error occurred while adding the item:", error);
+        }
+    };
+
+    const handleAddCustomer = async (newCustomer) => {
+        try {
+            // Make the API call to add the customer
+            //await axios.post("http://localhost:8888/add_customer.php", newCustomer);
+            // Update the customers list by fetching the updated data
+            //const responseCustomers = await axios.get("http://localhost:8888/get_customers.php");
+            //setUsers(responseCustomers.data);
+            // Hide the AddCustomerForm
+            setShowAddCustomerForm(false);
+        } catch (error) {
+            console.error("An error occurred while adding the customer:", error);
+        }
+    };
+
+    const handleAddSeller = async (newSeller) => {
+        try {
+            // Make the API call to add the seller
+            //await axios.post("http://localhost:8888/add_seller.php", newSeller);
+            // Update the sellers list by fetching the updated data
+            //const responseSellers = await axios.get("http://localhost:8888/get_sellers.php");
+            //setSellers(responseSellers.data);
+            // Hide the AddSellerForm
+            setShowAddSellerForm(false);
+        } catch (error) {
+            console.error("An error occurred while adding the seller:", error);
         }
     };
 
@@ -99,7 +129,7 @@ export default function Admin() {
                     <div className="carouselDiv">
                         <div className="divUsers">
                             <div className={`divAdminCustomer${activeDiv === "divAdminCustomer" ? " active" : ""}`}>
-                                <button>ADD</button>
+                                <button onClick={() => setShowAddCustomerForm(true)}>ADD</button>
                                 <div className="admincustomerPanCard">
                                     <div className="admincustomerPanCardScroll">
                                         {users.map((user) => (
@@ -117,7 +147,7 @@ export default function Admin() {
                                 </div>
                             </div>
                             <div className={`divAdminSellers${activeDiv === "divAdminSellers" ? " active" : ""}`}>
-                                <button>ADD</button>
+                                <button onClick={() => setShowAddSellerForm(true)}>ADD</button>
                                 <div className="adminSellerPanCard">
                                     <div className="adminSellerPanCardScroll">
                                         {sellers.map((seller) => (
@@ -165,7 +195,9 @@ export default function Admin() {
                     </div>
                 </div>
 
-            {showAddItemForm && <AddItemForm classname={"addItemForm"} onAddItem={handleAddItem} onClose={() => setShowAddItemForm(false)} />}
+                {showAddItemForm && <AddItemForm onAddItem={handleAddItem} onClose={() => setShowAddItemForm(false)} />}
+                {showAddCustomerForm && <AddCustomerForm onAddCustomer={handleAddCustomer} onClose={() => setShowAddCustomerForm(false)} />}
+                {showAddSellerForm && <AddSellersForm onAddSeller={handleAddSeller} onClose={() => setShowAddSellerForm(false)} />}
             </div>
         </>
     );

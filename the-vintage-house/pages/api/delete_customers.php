@@ -17,5 +17,5 @@ if ($result) {
     echo json_encode(['success' => true]);
 } else {
     // Une erreur s'est produite lors de la suppression
-    echo json_encode(['success' => false, 'message' => 'Failed to delete item.']);
+    echo json_encode(['success' => false, 'message' => 'Failed to delete customers.']);
 }
