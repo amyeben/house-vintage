@@ -7,6 +7,7 @@ import AdminSellersPan from "../../../components/AdminSellersPan";
 import AdminProductsPan from "../../../components/AdminProductsPan";
 import { useRouter } from "next/router";
 import axios from "axios";
+import AddItemForm from "../../../components/AddItemForm"; // Import the AddItemForm component
 
 export default function Admin() {
     const [activeDiv, setActiveDiv] = useState("divAdminCustomer");
@@ -14,6 +15,7 @@ export default function Admin() {
     const [sellers, setSellers] = useState([]);
     const [items, setItems] = useState([]);
     const [customer, setCustomer] = useState([]);
+    const [showAddItemForm, setShowAddItemForm] = useState(false); // State to control the visibility of AddItemForm
 
     const handleClick = (divName) => {
         setActiveDiv(divName);
@@ -24,7 +26,7 @@ export default function Admin() {
             await axios.delete(`http://localhost:8888/delete_items.php?id=${itemId}`);
             setItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
         } catch (error) {
-            console.error("Une erreur s'est produite lors de la suppression de l'article :", error);
+            console.error("An error occurred while deleting the item:", error);
         }
     };
 
@@ -33,17 +35,16 @@ export default function Admin() {
             await axios.delete(`http://localhost:8888/delete_customers.php?id=${customerId}`);
             setCustomer((prevCustomers) => prevCustomers.filter((customer) => customer.id !== customerId));
         } catch (error) {
-            console.error("Une erreur s'est produite lors de la suppression du client :", error);
+            console.error("An error occurred while deleting the customer:", error);
         }
     };
-
 
     const handleDeleteSeller = async (sellerId) => {
         try {
             await axios.delete(`http://localhost:8888/delete_sellers.php?id=${sellerId}`);
             setSellers((prevSellers) => prevSellers.filter((seller) => seller.id !== sellerId));
         } catch (error) {
-            console.error("Une erreur s'est produite lors de la suppression du vendeur :", error);
+            console.error("An error occurred while deleting the seller:", error);
         }
     };
 
@@ -62,30 +63,45 @@ export default function Admin() {
                 setSellers(responseSeller.data);
                 setItems(responseItems.data);
             } catch (error) {
-                console.error("Une erreur s'est produite lors de la récupération des utilisateurs :", error);
+                console.error("An error occurred while fetching the users:", error);
             }
         }
 
         fetchData();
     }, []);
 
+    const handleAddItem = async (newItem) => {
+        try {
+            // Make the API call to add the item
+            //await axios.post("http://localhost:8888/add_items.php", newItem);
+            // Update the items list by fetching the updated data
+            //const responseItems = await axios.get("http://localhost:8888/get_items.php");
+            //setItems(responseItems.data);
+            // Hide the AddItemForm
+            //setShowAddItemForm(false);
+            console.log("yesssss")
+        } catch (error) {
+            console.error("An error occurred while adding the item:", error);
+        }
+    };
+
     return (
         <>
-            <div className={"main-content, admin-page"}>
+            <div className="main-content admin-page">
                 <Layout />
                 <NavbarAdmin />
-                <div className={"adminPageDiv"}>
-                    <div className={"divAdminH"}>
+                <div className="adminPageDiv">
+                    <div className="divAdminH">
                         <span>THE VINTAGE HOUSE</span>
-                        <Image src={"/img/bubble.png"} height={138} width={138} alt={"bubble"} />
+                        <Image src="/img/bubble.png" height={138} width={138} alt="bubble" />
                         <p>ADMIN</p>
                     </div>
-                    <div className={"carouselDiv"}>
-                        <div className={"divUsers"}>
-                            <div className={"divAdminCustomer" + (activeDiv === "divAdminCustomer" ? " active" : "")}>
+                    <div className="carouselDiv">
+                        <div className="divUsers">
+                            <div className={`divAdminCustomer${activeDiv === "divAdminCustomer" ? " active" : ""}`}>
                                 <button>ADD</button>
-                                <div className={"admincustomerPanCard"}>
-                                    <div className={"admincustomerPanCardScroll"}>
+                                <div className="admincustomerPanCard">
+                                    <div className="admincustomerPanCardScroll">
                                         {users.map((user) => (
                                             <AdminCustomerPan
                                                 key={user.id}
@@ -100,10 +116,10 @@ export default function Admin() {
                                     </div>
                                 </div>
                             </div>
-                            <div className={"divAdminSellers" + (activeDiv === "divAdminSellers" ? " active" : "")}>
+                            <div className={`divAdminSellers${activeDiv === "divAdminSellers" ? " active" : ""}`}>
                                 <button>ADD</button>
-                                <div className={"adminSellerPanCard"}>
-                                    <div className={"adminSellerPanCardScroll"}>
+                                <div className="adminSellerPanCard">
+                                    <div className="adminSellerPanCardScroll">
                                         {sellers.map((seller) => (
                                             <AdminSellersPan
                                                 key={seller.id}
@@ -111,16 +127,16 @@ export default function Admin() {
                                                 lastname={seller.lastname}
                                                 email={seller.email}
                                                 articles={seller.articles}
-                                                onDelete={() => handleDeleteSeller(seller.id)} // Utilisez seller.id au lieu de seller.id
+                                                onDelete={() => handleDeleteSeller(seller.id)}
                                             />
                                         ))}
                                     </div>
                                 </div>
                             </div>
-                            <div className={"divAdminProducts" + (activeDiv === "divAdminProducts" ? " active" : "")}>
-                                <button>ADD</button>
-                                <div className={"adminProductsPanCard"}>
-                                    <div className={"adminProductsPanCardScroll"}>
+                            <div className={`divAdminProducts${activeDiv === "divAdminProducts" ? " active" : ""}`}>
+                                <button onClick={() => setShowAddItemForm(true)}>ADD</button>
+                                <div className="adminProductsPanCard">
+                                    <div className="adminProductsPanCardScroll">
                                         {items.map((item) => (
                                             <AdminProductsPan
                                                 key={item.id}
@@ -148,6 +164,8 @@ export default function Admin() {
                         </div>
                     </div>
                 </div>
+
+            {showAddItemForm && <AddItemForm classname={"addItemForm"} onAddItem={handleAddItem} onClose={() => setShowAddItemForm(false)} />}
             </div>
         </>
     );

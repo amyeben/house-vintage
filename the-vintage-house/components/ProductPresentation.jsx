@@ -23,7 +23,7 @@ const ProductPresentation = (children) => {
               />
               <span className={"articleName"}> {children.articleName}</span>
               <span className={"articlePrice"}> {children.articlePrice}</span>
-              <button className={styles.buttonBuy} value={"BUY"} onClick={getIdProductToCart}>BUY</button>
+              <button className={styles.buttonBuy} value={"BUY"} onClick={children.getLoginPage}>BUY</button>
           </div>
         </>
     );

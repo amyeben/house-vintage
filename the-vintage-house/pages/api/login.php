@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $conn->query($sql);
 
         if ($result) {
-            $response = array("success" => true, "user_type" => "seller");
+            $response = array("success" => true, "user_type" => "seller", "user_id" => $userId);
             echo json_encode($response);
         } else {
             // La requête a échoué
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $conn->query($sql);
 
         if ($result) {
-            $response = array("success" => true, "user_type" => "customer");
+            $response = array("success" => true, "user_type" => "customer", "user_id" => $userId);
             echo json_encode($response);
         } else {
             // La requête a échoué
@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $conn->query($sql);
 
         if ($result) {
-            $response = array("success" => true, "user_type" => "admin");
+            $response = array("success" => true, "user_type" => "admin", "user_id" => $userId);
             echo json_encode($response);
         } else {
             // La requête a échoué

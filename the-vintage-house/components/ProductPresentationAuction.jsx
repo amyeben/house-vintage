@@ -23,7 +23,7 @@ const ProductPresentationAuction = (children) => {
                 />
                 <span className={"articleName"}> {children.articleName}</span>
                 <span className={"articlePrice"}>Last Offer: {children.articlePrice}</span>
-                <button className={styles.buttonBuy} value={"MAKE AN OFFER"} onClick={getIdProductToCart}>MAKE AN OFFER</button>
+                <button className={styles.buttonBuy} value={"MAKE AN OFFER"} onClick={children.action}>MAKE AN OFFER</button>
             </div>
         </>
     );

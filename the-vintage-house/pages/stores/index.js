@@ -11,12 +11,14 @@ const Store = () => {
 
     const router = useRouter();
 
+
+
     useEffect(() => {
         const expirationTime = sessionStorage.getItem('expiration_time');
         const userType = sessionStorage.getItem('user_type');
 
         if (!userType || (expirationTime && Date.now() > parseInt(expirationTime))) {
-            router.push('/stores');
+            //router.push('/stores');
         } else {
             switch (userType) {
                 case 'customer':
