@@ -16,7 +16,7 @@ const AdminProductsPan = (children) => {
 
                 />
                 <span>NAME OF THE PRODUCT: {children.nameProduct}</span>
-                <span>DATE OF CREATION: {children.creationDate}</span>
+                <span>PRICE: {children.price} £ </span>
                 <button onClick={children.onDelete}>DELETE</button>
             </div>
         </>

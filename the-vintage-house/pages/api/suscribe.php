@@ -1,7 +1,7 @@
 <?php
 
 
-header("Access-Control-Allow-Origin: http://localhost:3000/suscribe");
+header("Access-Control-Allow-Origin: http://localhost:3000/suscribe, http://localhost:3000/posts/admin");
 header("Access-Control-Allow-Headers: POST");
 header("Access-Control-Allow-Methods: Content-Type");
 

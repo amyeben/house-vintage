@@ -75,12 +75,12 @@ export default function Sellers() {
     const handleAddItem = async (newItem) => {
         try {
             // Make the API call to add the item
-            //await axios.post("http://localhost:8888/add_items.php", newItem);
+            await axios.post("http://localhost:8888/add_items.php", newItem);
             // Update the items list by fetching the updated data
-            //const responseItems = await axios.get("http://localhost:8888/get_items.php");
-            //setItems(responseItems.data);
+            const responseItems = await axios.get("http://localhost:8888/get_items.php");
+            setItems(responseItems.data);
             // Hide the AddItemForm
-            //setShowAddItemForm(false);
+            setShowAddItemForm(false);
             console.log("yesssss");
         } catch (error) {
             console.error("An error occurred while adding the item:", error);

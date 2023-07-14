@@ -23,25 +23,7 @@ const AddItemForm = ({ onAddItem, onClose }) => {
         };
 
 
-        try {
-            const response = await axios.post('http://localhost:8888/add_items.php', newItem);
 
-            if (response.status !== 200) {
-                throw new Error('Erreur lors de la requête.');
-            }
-
-            const responseData = response.data;
-            console.log(responseData);
-
-        } catch (error) {
-            console.log(error);
-            const errorMessage = "Une erreur s'est produite lors de la requête.";
-            const errorResponse = {
-                success: false,
-                message: errorMessage
-            };
-            console.log(errorResponse);
-        }
         // Call the onAddItem function with the new item
         onAddItem(newItem);
         // Clear the form fields
