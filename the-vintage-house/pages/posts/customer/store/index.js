@@ -4,11 +4,14 @@ import Image from "next/image";
 import ProductPresentation from "../../../../components/ProductPresentation";
 import FooterUser from "../../../../components/FooterUser";
 import ProductPresentationAuction from "../../../../components/ProductPresentationAuction";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useRouter} from "next/dist/client/compat/router";
+import axios from "axios";
 
-const Store = () => {
+const StoreCustomer = () => {
     const router = useRouter();
+    const [products, setProducts] = useState({ auctions: [], clothing: [], accessories: [], footwear: [], electronics: [] ,books: [],});
+
 
     useEffect(() => {
         const expirationTime = sessionStorage.getItem('expiration_time');
@@ -32,7 +35,15 @@ const Store = () => {
                     break;
             }
         }
+
+        axios.get('http://localhost:8888/get_store_items.php')
+            .then(response => {
+                const sortedProducts = response.data;
+                setProducts(sortedProducts);
+            })
+            .catch(error => console.log(error));
     }, []);
+
 
 
   return(
@@ -51,74 +62,96 @@ const Store = () => {
                       <legend id={"auctions"}>#AUCTIONS</legend>
                       <p>FROM XX/XX/XXXX TO XX/XX/XXXX</p>
                       <div className={"storeAuctionsCard"}>
-                          <ProductPresentationAuction srcImage={"/../public/img/imgElectronics/camera.png"} id={1} articleName={"Article 1"} articlePrice={"34£"} />
-                          <ProductPresentationAuction srcImage={"/../public/img/imgElectronics/console.webp"} id={1} articleName={"Article 2"} articlePrice={"34£"} />
-                          <ProductPresentationAuction srcImage={"/../public/img/imgElectronics/recordplayer.png"} id={1} articleName={"Article 3"} articlePrice={"34£"} />
-                          <ProductPresentationAuction srcImage={"/../public/img/imgElectronics/telephone.png"} id={1} articleName={"Article 4"} articlePrice={"34£"} />
-                          <ProductPresentationAuction srcImage={"/../public/img/imgElectronics/typewriters.png"} id={1} articleName={"Article 5"} articlePrice={"3664£"} />
                       </div>
+                      <p className={"alertMsg"}>NO AUCTIONS FOR NOW !!</p>
                   </fieldset></div>
+
+
               <div className="fieldsetContainer">
-              <fieldset>
-                  <legend id={"clothing"}>#CLOTHING</legend>
-                  <div className={"storeClothingCard"}>
-                      <ProductPresentation srcImage={"/../public/img/imgClothing/imgJacket/jacket1.webp"} id={1} articleName={"Article 1"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgClothing/imgJacket/jacket2.webp"} id={1} articleName={"Article 2"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgClothing/imgJacket/jacket3.jpeg"} id={1} articleName={"Article 3"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgClothing/imgPants/pant2.png"} id={1} articleName={"Article 4"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgClothing/imgPants/pant3.png"} id={1} articleName={"Article 5"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgClothing/imgPants/pants.png"} id={1} articleName={"Article 6"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgClothing/imgTShirt/tshirt1.webp"} id={1} articleName={"Article 7"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgClothing/imgTShirt/tshirt2.png"} id={1} articleName={"Article 8"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgClothing/imgTShirt/tshirt3.webp"} id={1} articleName={"Article 9"} articlePrice={"34£"} />
-                  </div>
-              </fieldset>
+                  <fieldset>
+                      <legend id="clothing">#CLOTHING</legend>
+                      <div className="storeClothingCard">
+                          {products.clothing.map(product => (
+                              <ProductPresentation
+                                  key={product.id}
+                                  srcImage={product.src_image}
+                                  id={product.id}
+                                  articleName={product.name}
+                                  articlePrice={product.price_items}
+                              />
+                          ))}
+                      </div>
+                  </fieldset>
               </div>
 
               <div className="fieldsetContainer">
-              <fieldset>
-                  <legend id={"accessories"}>#ACCESSORIES</legend>
-                  <div className={"storeAccessoriesCard"}>
-                      <ProductPresentation srcImage={"/../public/img/imgAccessories/necklace1.webp"} id={1} articleName={"Article 1"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgAccessories/necklace2.webp"} id={1} articleName={"Article 2"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgAccessories/necklace3.png"} id={1} articleName={"Article 3"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgAccessories/necklace4.png"} id={1} articleName={"Article 4"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgAccessories/necklace5.png"} id={1} articleName={"Article 5"} articlePrice={"34£"} />
-                  </div>
-              </fieldset></div>
+                  <fieldset>
+                      <legend id="accessories">#ACCESSORIES</legend>
+                      <div className="storeAccessoriesCard">
+                          {products.accessories.map(product => (
+                              <ProductPresentation
+                                  key={product.id}
+                                  srcImage={product.src_image}
+                                  id={product.id}
+                                  articleName={product.name}
+                                  articlePrice={product.price_items}
+                              />
+                          ))}
+                      </div>
+                  </fieldset>
+              </div>
+
               <div className="fieldsetContainer">
-              <fieldset>
-                  <legend id={"footwear"}>#FOOTWEAR</legend>
-                  <div className={"storeFootwearCard"}>
-                      <ProductPresentation srcImage={"/../public/img/imgFootwear/fw1.webp"} id={1} articleName={"Article 1"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgFootwear/fw2.png"} id={1} articleName={"Article 2"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgFootwear/fw3.png"} id={1} articleName={"Article 3"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgFootwear/fw4.webp"} id={1} articleName={"Article 4"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgFootwear/fw5.png"} id={1} articleName={"Article 5"} articlePrice={"34£"} />
-                  </div>
-              </fieldset></div>
+                  <fieldset>
+                      <legend id="footwear">#FOOTWEAR</legend>
+                      <div className="storeFootwearCard">
+                          {products.footwear.map(product => (
+                              <ProductPresentation
+                                  key={product.id}
+                                  srcImage={product.src_image}
+                                  id={product.id}
+                                  articleName={product.name}
+                                  articlePrice={product.price_items}
+                              />
+                          ))}
+                      </div>
+                  </fieldset>
+              </div>
+
               <div className="fieldsetContainer">
-              <fieldset>
-                  <legend id={"books"}>#BOOKS AND MAGASINES</legend>
-                  <div className={"storeBooksCard"}>
-                      <ProductPresentation srcImage={"/../public/img/imgBooksAndMagasine/book1.png"} id={1} articleName={"Article 1"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgBooksAndMagasine/book2.png"} id={1} articleName={"Article 2"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgBooksAndMagasine/map3.png"} id={1} articleName={"Article 3"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgBooksAndMagasine/manga4.jpeg"} id={1} articleName={"Article 4"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgBooksAndMagasine/manga5.png"} id={1} articleName={"Article 5"} articlePrice={"34£"} />
-                  </div>
-              </fieldset></div>
+                  <fieldset>
+                      <legend id="books">#BOOKS AND MAGASINES</legend>
+                      <div className="storeBooksCard">
+                          {products.books.map(product => (
+                              <ProductPresentation
+                                  key={product.id}
+                                  srcImage={product.src_image}
+                                  id={product.id}
+                                  articleName={product.name}
+                                  articlePrice={product.price_items}
+                              />
+                          ))}
+                      </div>
+                  </fieldset>
+              </div>
+
               <div className="fieldsetContainer">
-              <fieldset>
-                  <legend id={"electronics"}>#ELECTRONICS</legend>
-                  <div className={"storeElectronicsCard"}>
-                      <ProductPresentation srcImage={"/../public/img/imgElectronics/camera.png"} id={1} articleName={"Article 1"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgElectronics/console.webp"} id={1} articleName={"Article 2"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgElectronics/recordplayer.png"} id={1} articleName={"Article 3"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgElectronics/telephone.png"} id={1} articleName={"Article 4"} articlePrice={"34£"} />
-                      <ProductPresentation srcImage={"/../public/img/imgElectronics/typewriters.png"} id={1} articleName={"Article 5"} articlePrice={"3664£"} />
-                  </div>
-              </fieldset></div>
+                  <fieldset>
+                      <legend id="electronics">#ELECTRONICS</legend>
+                      <div className="storeElectronicsCard">
+                          {products.electronics.map(product => (
+                              <ProductPresentation
+                                  key={product.id}
+                                  srcImage={product.src_image}
+                                  id={product.id}
+                                  articleName={product.name}
+                                  articlePrice={product.price_items}
+                              />
+                          ))}
+                      </div>
+                  </fieldset>
+              </div>
+
 
 
 
@@ -129,4 +162,4 @@ const Store = () => {
       </>
   );
 }
-export default Store;
+export default StoreCustomer;

@@ -28,6 +28,7 @@ export default function Sellers() {
     useEffect(() => {
         const expirationTime = sessionStorage.getItem('expiration_time');
         const userType = sessionStorage.getItem('user_type');
+        const userId = sessionStorage.getItem('user_id');
 
         if (!userType || (expirationTime && Date.now() > parseInt(expirationTime))) {
             // La session a expiré ou l'utilisateur n'est pas connecté, rediriger vers la page de connexion
@@ -55,8 +56,9 @@ export default function Sellers() {
 
         async function fetchData() {
             try {
-                const userId = sessionStorage.getItem('user_id');
-                const responseItems = await axios.post("http://localhost:8888/get_items.php", userId);
+
+                console.log(userId)
+                const responseItems = await axios.post("http://localhost:8888/get_seller_items.php", {user_id : userId} );
 
                 if (responseItems.status !== 200) {
                     throw new Error('Erreur lors de la requête.');
@@ -106,21 +108,29 @@ export default function Sellers() {
                 <button onClick={() => setShowAddItemForm(true)}>ADD</button>
             </div>
 
-            <div className={"productsSeller"}>
-                {items.map((item) => (
-                    <div className="card">
-                        <SellerProductAD
-                            srcImage={item.src_image}
-                            productName={item.name}
-                            productPrice={item.price_items}
-                            productCategorie={item.categorie}
-                            productDescription={item.description}
-                            productAuction={item.auction_items}
-                            onDelete={() => handleDeleteItem(item.id)}/>
-                    </div>))}
-
-
+            <div>
+                {items.length > 0 ? (
+                    <div className={"productsSeller"}>
+                        {items.map((item) => (
+                            <div className="card">
+                                <SellerProductAD
+                                    srcImage={item.src_image}
+                                    productName={item.name}
+                                    productPrice={item.price_items}
+                                    productCategorie={item.categorie}
+                                    productDescription={item.description}
+                                    productAuction={item.auction_items}
+                                    onDelete={() => handleDeleteItem(item.id)}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p className={"alertMsg"}>No items available, add some !</p>
+                )}
             </div>
+
+
 
 
             {showAddItemForm && <AddItemForm onAddItem={handleAddItem} onClose={() => setShowAddItemForm(false)} />}

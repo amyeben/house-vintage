@@ -1,10 +1,11 @@
 <?php
 
 header("Access-Control-Allow-Origin: http://localhost:3000/posts/admin");
-header("Access-Control-Allow-Headers: GET");
+header("Access-Control-Allow-Headers: GET, POST");
 header("Access-Control-Allow-Methods: Content-Type");
 
 include 'db_connection.php';
+
 
 $sql = "SELECT * FROM items";
 $result = $conn->query($sql);

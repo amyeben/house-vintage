@@ -1,6 +1,6 @@
 .cards {
     flex-shrink: 0; /* Empêche les cartes de réduire leur taille */
-    height: 250px;
+    height: 300px;
     color: #FFFFFF;
     box-shadow: 0px 4px 19px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
@@ -9,6 +9,20 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    text-align: initial;
+    padding-right: 30px;
+
+
+}
+
+.imgProductStore > img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 10px;
+    border-radius: 6px;
+    width: 320px;
 
 }
 
@@ -19,6 +33,8 @@
     align-content: center;
     margin: 10px;
     border-radius: 6px;
+    height: 280px ;
+    width: auto;
 
 }
 

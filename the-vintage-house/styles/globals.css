@@ -481,6 +481,13 @@ ol, li {
 }
 
 
-
+.alertMsg {
+  font-family: "BM HANNA_TTF";
+  text-align: center;
+  color: red;
+  font-size: 20px;
+  margin-top: 100px;
+  margin-bottom: 120px;
+}
 
 

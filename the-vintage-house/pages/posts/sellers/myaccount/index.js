@@ -52,6 +52,13 @@ const MyaccountSellers = () => {
         }
     };
 
+    const handleDeleteAccount = async () => {
+        const sellerId = sessionStorage.getItem("user_id");
+        await axios.delete(`http://localhost:8888/delete_sellers.php?id=${sellerId}`)
+        // Rediriger vers la page de connexion après la suppression du compte
+        await router.push("/login");
+    };
+
     return (
         <>
             <div className={"main-content"}>
@@ -81,7 +88,7 @@ const MyaccountSellers = () => {
                                 <span>Sold Products: {sellerInfo?.soldProducts}</span>
                             </div>
                             <div>
-                                <button>DELETE MY ACCOUNT</button>
+                                <button onClick={handleDeleteAccount}>DELETE MY ACCOUNT</button>
                             </div>
                         </div>
                     </div>

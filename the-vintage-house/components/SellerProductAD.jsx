@@ -7,7 +7,7 @@ const SellerProductAD = (param) => {
 
     return (
         <div className={styles.cards}>
-            <div className={styles.imgProduct}>
+            <div className={styles.imgProductStore}>
             <Image
                 src={param.srcImage}
                 id={param.id}
