@@ -1,6 +1,6 @@
 <?php
 
-header("Access-Control-Allow-Origin: http://localhost:3000/posts/sellers/products");
+header("Access-Control-Allow-Origin: http://localhost:3000/posts/sellers/products, ");
 header("Access-Control-Allow-Headers: POST");
 header("Access-Control-Allow-Methods: Content-Type");
 

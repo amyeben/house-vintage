@@ -10,9 +10,15 @@ import { useRouter } from "next/dist/client/compat/router";
 
 const Home = () => {
     const router = useRouter();
+    const [showAlert, setShowAlert] = useState(false);
 
-    function getLoginPage() {
-        router.push("/login");
+    function handleShowAlert() {
+        console.log("ALERT");
+        setShowAlert(true);
+    }
+
+    function handleHideAlert() {
+        setShowAlert(false);
     }
 
     const [trendingItems, setTrendingItems] = useState([]);
@@ -24,7 +30,7 @@ const Home = () => {
                 const response = await axios.post("http://localhost:8888/get_homecard_items.php");
 
                 if (response.status !== 200) {
-                    throw new Error("Erreur lors de la requête.");
+                    throw new Error("Error during the request.");
                 }
 
                 setTrendingItems(response.data.firstTenItems);
@@ -49,7 +55,6 @@ const Home = () => {
                     <Image src="/../public/img/arrow2.png" height={265.5} width={181.31} alt="arrow2" />
                 </div>
 
-
                 <span className="pageMiniTitle">TRENDING ON THE VINTAGE HOUSE</span>
                 <div className="homePageCards1">
                     {trendingItems.map((item) => (
@@ -59,7 +64,7 @@ const Home = () => {
                             id={item.id}
                             articleName={item.name}
                             articlePrice={item.price_items}
-                            getLoginPage={() => getLoginPage()}
+                            div={() => handleShowAlert()}
                         />
                     ))}
                 </div>
@@ -73,12 +78,26 @@ const Home = () => {
                             id={item.id}
                             articleName={item.name}
                             articlePrice={item.price_items}
-                            getLoginPage={() => getLoginPage()}
+                            div={() => handleShowAlert()}
                         />
                     ))}
                 </div>
             </div>
             <Footer />
+
+            {showAlert && (
+                <div className="alert-overlay">
+                    <div className="alert-content">
+                        <span className="alert-title">You have to register if you want to buy something!</span>
+                        <button className="alert-button" onClick={() => router.push('/suscribe')}>
+                            Register
+                        </button>
+                        <span className="close-button" onClick={handleHideAlert}>
+              &times;
+            </span>
+                    </div>
+                </div>
+            )}
         </>
     );
 };

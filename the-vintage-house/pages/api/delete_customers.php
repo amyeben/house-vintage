@@ -1,6 +1,6 @@
 <?php
 
-header("Access-Control-Allow-Origin: http://localhost:3000/posts/admin");
+header("Access-Control-Allow-Origin: http://localhost:3000/posts/admin, http://localhost:3000/posts/customer/myaccount");
 header("Access-Control-Allow-Headers: DELETE");
 header("Access-Control-Allow-Methods: Content-Type");
 

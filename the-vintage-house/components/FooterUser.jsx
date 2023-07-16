@@ -9,44 +9,55 @@ const FooterUser = () => {
                 <div className={styles.footerDIV}>
                     <div className={styles.row1}>
                         <div className={styles.logoTVH}>
-                            <Image src="/../public/img/logoTVH.png" height={88} width={93.78} alt={"logo"}/>
+                            <a href={"/posts/customer"}>
+                                <Image src="/../public/img/logoTVH.png" height={88} width={93.78} alt={"logo"}/></a>
                         </div>
 
                         <div className={styles.footerMenu}>
                             <div className={styles.menuColumn}>
                                 <div>
-                                    <span className={styles.menuTitle}>HOME</span>
+                                    <span className={styles.menuTitle}><a href={"/posts/customer"}>HOME</a></span>
                                 </div>
                             </div>
                             <div className={styles.menuColumn}>
                                 <div>
-                                    <span className={styles.menuTitle}>STORE</span>
+                                    <span className={styles.menuTitle}>
+                                        <a href={"/posts/customer/store"}>STORE</a></span>
                                 </div>
                                 <div className={styles.subMenu}>
-                                    <span>CLOTHING</span>
-                                    <span>ACCESSORIES</span>
-                                    <span>FOOTWEAR</span>
-                                    <span>BOOKS AND MAGAZINES</span>
-                                    <span>ELECTRONICS</span>
+                                    <a href={"/posts/customer/store#clothing"}>
+                                        <span>CLOTHING</span></a>
+                                    <a href={"/posts/customer/store#accessories"}>
+                                        <span>ACCESSORIES</span></a>
+                                    <a href={"/posts/customer/store#footwear"}>
+                                        <span>FOOTWEAR</span></a>
+                                    <a href={"/posts/customer/store#books"}>
+                                        <span>BOOKS AND MAGAZINES</span></a>
+                                    <a href={"/posts/customer/store#electronics"}>
+                                        <span>ELECTRONICS</span></a>
                                 </div>
                             </div>
                             <div className={styles.menuColumn}>
                                 <div>
-                                    <span className={styles.menuTitle}>INFORMATIONS</span>
+                                    <span className={styles.menuTitle}>
+                                        <a href={"/posts/customer/informations"}>INFORMATIONS</a></span>
                                 </div>
                                 <div className={styles.subMenu}>
-                                    <span>AUCTIONS</span>
-                                    <span>BEST OFFER</span>
-                                    <span>BUY IT NOW</span>
+                                    <a href={"/posts/customer/informations#auctions"}>
+                                        <span>AUCTIONS</span></a>
+                                    <a href={"/posts/customer/informations#bestoffer"}>
+                                        <span>BEST OFFER</span></a>
+                                    <a href={"/posts/customer/informations#buyitnow"}>
+                                        <span>BUY IT NOW</span></a>
                                 </div>
                             </div>
                             <div className={styles.menuColumn}>
                                 <div>
-                                    <span className={styles.menuTitle}>MY ACCOUNT</span>
+                                    <a href={"/posts/customer/myaccount"}>
+                                        <span className={styles.menuTitle}>MY ACCOUNT</span></a>
                                 </div>
                                 <div className={styles.subMenu}>
-                                    <span>ACCOUNT INFORMATION</span>
-                                    <span>CART</span>
+                                    <a href={"/posts/customer/myaccount"}><span>ACCOUNT INFORMATION</span></a>
                                 </div>
                             </div>
                         </div>

@@ -40,7 +40,7 @@ const AddItemForm = ({ onAddItem, onClose }) => {
             <div className={styles.formContainer}>
                 <form onSubmit={handleSubmit} method={"POST"}>
                 <button className={styles.closeButton} onClick={onClose}>
-                    X
+                    &times;
                 </button>
                 <h2>Add an Item</h2>
                 <div className={styles.formGroup}>

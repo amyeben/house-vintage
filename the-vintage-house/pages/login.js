@@ -2,6 +2,7 @@ import styles from '../styles/login.module.css';
 import { useState } from 'react';
 import axios from 'axios';
 import stringify from "postcss/lib/stringify";
+import Image from "next/image";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -69,6 +70,9 @@ const Login = () => {
     return (
         <>
             <div className={styles.loginForm}>
+                <a href={"/"}>
+                    <Image src="/../public/img/logoTVH.png" height={88} width={93.78} alt={"logo"}/>
+                </a>
                 <span>THE VINTAGE HOUSE</span>
                 <form className={styles.form} method={"POST"}>
                     <input

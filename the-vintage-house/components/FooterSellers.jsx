@@ -9,28 +9,32 @@ const FooterUser = () => {
                 <div className={styles.footerDIV}>
                     <div className={styles.row1}>
                         <div className={styles.logoTVH}>
-                            <Image src="/../public/img/logoTVH.png" height={88} width={93.78} alt={"logo"}/>
+                            <a href={"/posts/sellers"}>
+                                <Image src="/../public/img/logoTVH.png" height={88} width={93.78} alt={"logo"}/>
+                            </a>
                         </div>
 
                         <div className={styles.footerMenu}>
                             <div className={styles.menuColumn}>
                                 <div>
-                                    <span className={styles.menuTitle}>HOME</span>
+                                    <span className={styles.menuTitle}><a href={"/posts/sellers"}>HOME</a></span>
                                 </div>
                             </div>
                             <div className={styles.menuColumn}>
                                 <div>
-                                    <span className={styles.menuTitle}>MY PRODUCTS</span>
+                                    <span className={styles.menuTitle}><a href={"/posts/sellers/products"}>MY PRODUCTS</a></span>
                                 </div>
 
                             </div>
                             <div className={styles.menuColumn}>
                                 <div>
-                                    <span className={styles.menuTitle}>PURCHASING</span>
+                                    <span className={styles.menuTitle}><a href={"/posts/sellers/purchasing"}>PURCHASING</a></span>
                                 </div>
                                 <div className={styles.subMenu}>
-                                    <span>AUCTIONS</span>
-                                    <span>OFFERS</span>
+                                    <a href={"/posts/sellers/purchasing/auctions"}>
+                                        <span>AUCTIONS</span></a>
+                                    <a href={"/posts/sellers/purchasing/offers"}>
+                                        <span>OFFERS</span></a>
                                 </div>
                             </div>
                             <div className={styles.menuColumn}>
@@ -38,7 +42,8 @@ const FooterUser = () => {
                                     <span className={styles.menuTitle}>MY ACCOUNT</span>
                                 </div>
                                 <div className={styles.subMenu}>
-                                    <span>ACCOUNT INFORMATION</span>
+                                    <a href={"/posts/sellers/myaccount"}>
+                                        <span>ACCOUNT INFORMATION</span></a>
                                 </div>
                             </div>
                         </div>

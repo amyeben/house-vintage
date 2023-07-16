@@ -74,16 +74,20 @@ export default function Sellers() {
         fetchData();
     }, []);
 
+
+
     const handleAddItem = async (newItem) => {
         try {
+            const userId = sessionStorage.getItem('user_id');
+            console.log(userId);
             // Make the API call to add the item
             await axios.post("http://localhost:8888/add_items.php", newItem);
             // Update the items list by fetching the updated data
-            const responseItems = await axios.get("http://localhost:8888/get_items.php");
+            const responseItems = await axios.post("http://localhost:8888/get_seller_items.php", {user_id: userId});
+            console.log(responseItems.data);
             setItems(responseItems.data);
             // Hide the AddItemForm
             setShowAddItemForm(false);
-            console.log("yesssss");
         } catch (error) {
             console.error("An error occurred while adding the item:", error);
         }

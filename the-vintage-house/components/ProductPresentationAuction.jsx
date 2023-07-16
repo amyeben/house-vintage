@@ -16,7 +16,7 @@ const ProductPresentationAuction = (children) => {
                 <Image
                     src={children.srcImage}
                     id={children.id}
-                    height={100} // Desired size with correct aspect ratio
+                    height={100}
                     width={100}
                     alt={"cards"}
 

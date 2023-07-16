@@ -10,6 +10,7 @@ import axios from "axios";
 
 const Store = () => {
     const router = useRouter();
+    const [showAlert, setShowAlert] = useState(false);
     const [products, setProducts] = useState({
         auctions: [],
         clothing: [],
@@ -18,6 +19,15 @@ const Store = () => {
         electronics: [],
         books: [],
     });
+
+    function handleShowAlert() {
+        console.log("ALERT");
+        setShowAlert(true);
+    }
+
+    function handleHideAlert() {
+        setShowAlert(false);
+    }
 
     useEffect(() => {
         const expirationTime = sessionStorage.getItem("expiration_time");
@@ -75,15 +85,7 @@ const Store = () => {
                         alt={"arrow2"}
                     />
                 </div>
-                <div className="fieldsetContainer">
-                    <fieldset>
-                        <legend id={"auctions"}>#AUCTIONS</legend>
-                        <p>FROM XX/XX/XXXX TO XX/XX/XXXX</p>
-                        <div className={"storeAuctionsCard"}>
-                        </div>
-                        <p className={"alertMsg"}>NO AUCTIONS FOR NOW !!</p>
-                    </fieldset>
-                </div>
+
                 <div className="fieldsetContainer">
                     <fieldset>
                         <legend id={"clothing"}>#CLOTHING</legend>
@@ -95,6 +97,7 @@ const Store = () => {
                                     id={product.id}
                                     articleName={product.name}
                                     articlePrice={product.price_items}
+                                    div={() => handleShowAlert()}
                                 />
                             ))}
                         </div>
@@ -111,6 +114,7 @@ const Store = () => {
                                     id={product.id}
                                     articleName={product.name}
                                     articlePrice={product.price_items}
+                                    div={() => handleShowAlert()}
                                 />
                             ))}
                         </div>
@@ -127,6 +131,7 @@ const Store = () => {
                                     id={product.id}
                                     articleName={product.name}
                                     articlePrice={product.price_items}
+                                    div={() => handleShowAlert()}
                                 />
                             ))}
                         </div>
@@ -143,6 +148,7 @@ const Store = () => {
                                     id={product.id}
                                     articleName={product.name}
                                     articlePrice={product.price_items}
+                                    div={() => handleShowAlert()}
                                 />
                             ))}
                         </div>
@@ -159,6 +165,7 @@ const Store = () => {
                                     id={product.id}
                                     articleName={product.name}
                                     articlePrice={product.price_items}
+                                    div={() => handleShowAlert()}
                                 />
                             ))}
                         </div>
@@ -166,6 +173,20 @@ const Store = () => {
                 </div>
             </div>
             <Footer />
+
+            {showAlert && (
+                <div className="alert-overlay">
+                    <div className="alert-content">
+                        <span className="alert-title">You have to register if you want to buy something!</span>
+                        <button className="alert-button" onClick={() => router.push('/suscribe')}>
+                            Register
+                        </button>
+                        <span className="close-button" onClick={handleHideAlert}>
+              &times;
+            </span>
+                    </div>
+                </div>
+            )}
         </>
     );
 };

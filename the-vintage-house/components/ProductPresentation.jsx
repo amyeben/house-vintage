@@ -16,14 +16,14 @@ const ProductPresentation = (children) => {
               <Image
                   src={children.srcImage}
                   id={children.id}
-                  height={100} // Desired size with correct aspect ratio
+                  height={100}
                   width={100}
                   alt={"cards"}
 
               />
               <span className={"articleName"}> {children.articleName}</span>
               <span className={"articlePrice"}> {children.articlePrice} £</span>
-              <button className={styles.buttonBuy} value={"BUY"} onClick={children.getLoginPage}>BUY</button>
+              <button className={styles.buttonBuy} value={"BUY"} onClick={children.div}>BUY</button>
           </div>
         </>
     );

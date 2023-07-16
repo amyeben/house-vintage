@@ -11,7 +11,7 @@ const NavbarUser = () => {
         sessionStorage.removeItem('expiration_time');
 
         // Rediriger l'utilisateur vers la page de connexion ou une autre page appropriée
-        window.location.href = '/login';
+        window.location.href = '/';
     };
 
     const handleLogout = () => {

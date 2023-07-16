@@ -34,7 +34,7 @@ const AddSellersForm = ({ onAddSeller, onClose }) => {
             <div className={styles.formContainer}>
                 <form onSubmit={handleSubmit}>
                     <button className={styles.closeButton} onClick={onClose}>
-                        X
+                        &times;
                     </button>
                     <h2>Add a Seller</h2>
                     <div className={styles.formGroup}>

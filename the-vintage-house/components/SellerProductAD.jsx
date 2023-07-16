@@ -11,8 +11,8 @@ const SellerProductAD = (param) => {
             <Image
                 src={param.srcImage}
                 id={param.id}
-                height={150}
-                width={150}
+                height={180}
+                width={180}
                 alt={"cards"}
             />
             </div>

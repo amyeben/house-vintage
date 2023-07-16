@@ -57,7 +57,12 @@ const Suscribe = () => {
     return(
         <>
 
+
             <div className={styles.suscribeForm}>
+                <a href={"/"}>
+                    <Image src="/../public/img/logoTVH.png" height={88} width={93.78} alt={"logo"}/>
+                </a>
+
                 <span>THE VINTAGE HOUSE</span>
                 <form className={styles.formSuscribe}>
                     <div className={styles.name}>
@@ -88,6 +93,7 @@ const Suscribe = () => {
                     <button onClick={handleSubmit} type={"submit"}>SIGN UP</button>
                 </form>
                     <a href={"/login"}><button className={styles.buttonARD}>ALREADY AN ACCOUNT</button></a>
+
 
 
             </div>
