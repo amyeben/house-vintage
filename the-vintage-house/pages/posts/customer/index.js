@@ -8,9 +8,13 @@ import NavbarUser from "../../../components/NavBarUser";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/dist/client/compat/router";
+import BuyAlert from "../../../components/BuyAlert";
 
 export default function Customer() {
     const router = useRouter();
+    const [showAlert, setShowAlert] = useState(false);
+    const [selectedItemId, setSelectedItemId] = useState(null);
+
 
     useEffect(() => {
         const expirationTime = sessionStorage.getItem("expiration_time");
@@ -57,6 +61,11 @@ export default function Customer() {
 
         fetchData();
     }, []);
+
+    const handleShowAlert = (itemId) => {
+        setSelectedItemId(itemId);
+        setShowAlert(true);
+    };
 
     return (
         <>
@@ -126,6 +135,7 @@ export default function Customer() {
                             id={item.id}
                             articleName={item.name}
                             articlePrice={item.price_items}
+                            div={() => handleShowAlert(item.id)}
                         />
                     ))}
                 </div>
@@ -138,11 +148,15 @@ export default function Customer() {
                             id={item.id}
                             articleName={item.name}
                             articlePrice={item.price_items}
+                            div={() => handleShowAlert(item.id)}
                         />
                     ))}
                 </div>
             </div>
             <FooterUser />
+
+            {showAlert && <BuyAlert itemId={selectedItemId} onClose={() => setShowAlert(false)} />}
+
         </>
     );
 }
