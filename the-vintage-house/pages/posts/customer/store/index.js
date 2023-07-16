@@ -7,6 +7,7 @@ import Image from 'next/image';
 import ProductPresentation from '../../../../components/ProductPresentation';
 import FooterUser from '../../../../components/FooterUser';
 import BuyAlert from '../../../../components/BuyAlert';
+import Cart from '../../../../components/Cart'; // Chemin du composant Cart
 
 const StoreCustomer = () => {
     const router = useRouter();
@@ -21,6 +22,27 @@ const StoreCustomer = () => {
 
     const [showAlert, setShowAlert] = useState(false);
     const [selectedItemId, setSelectedItemId] = useState(null);
+    const [showCart, setShowCart] = useState(false);
+    const [cartItems, setCartItems] = useState([]);
+
+    const handleAddToCart = (item) => {
+        const userId = sessionStorage.getItem("user_id");
+        const uniqueItemId = `${item.id}_${userId}`; // Remplacez "userId" par l'ID de l'utilisateur
+
+        const newCartItem = {
+            ...item,
+            quantity: item.quantity,
+            totalPrice: item.quantity * parseFloat(item.price_items),
+            uniqueItemId,
+        };
+
+        // Ajouter le nouvel objet cartItem au panier
+        setCartItems([...cartItems, newCartItem]);
+
+        setShowAlert(false);
+        setShowCart(true);
+    };
+
 
     useEffect(() => {
         const expirationTime = sessionStorage.getItem('expiration_time');
@@ -57,6 +79,15 @@ const StoreCustomer = () => {
     const handleShowAlert = (itemId) => {
         setSelectedItemId(itemId);
         setShowAlert(true);
+    };
+
+    const handleRemoveFromCart = (uniqueItemId) => {
+        const updatedCartItems = cartItems.filter((cartItem) => cartItem.uniqueItemId !== uniqueItemId);
+        setCartItems(updatedCartItems);
+    };
+
+    const handleClearCart = () => {
+        setCartItems([]);
     };
 
     return (
@@ -171,10 +202,16 @@ const StoreCustomer = () => {
                         </div>
                     </fieldset>
                 </div>
+                {showAlert && (
+                    <BuyAlert
+                        itemId={selectedItemId}
+                        onClose={() => setShowAlert(false)}
+                        addToCart={handleAddToCart}
+                    />
+                )}
             </div>
             <FooterUser />
-
-            {showAlert && <BuyAlert itemId={selectedItemId} onClose={() => setShowAlert(false)} />}
+            {showCart && <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} onClose={() => setShowCart(false)} onClearCart={handleClearCart}/>}
         </>
     );
 };

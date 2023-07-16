@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Image from "next/image";
-import styles from "./buyalert.module.css";
+import Image from 'next/image';
+import styles from './buyalert.module.css';
+import {useEffect, useState} from "react";
 
-const BuyAlert = ({ itemId, onClose }) => {
+const BuyAlert = ({ itemId, onClose, addToCart }) => {
     const [itemDetails, setItemDetails] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [totalPrice, setTotalPrice] = useState(0);
 
     const handleGetItemDetails = async () => {
         try {
-            const response = await axios.post(
-                'http://localhost:8888/get_items_details_buy.php',
-                { item_id: itemId }
-            );
+            const response = await axios.post('http://localhost:8888/get_items_details_buy.php', {
+                item_id: itemId,
+            });
 
             if (response.status === 200) {
                 setItemDetails(response.data);
@@ -26,13 +26,12 @@ const BuyAlert = ({ itemId, onClose }) => {
     };
 
     const handleAddToCart = () => {
-        //TODO
-        console.log('Item added to cart:', itemDetails);
+        addToCart({ ...itemDetails, quantity }); // Ajouter l'article au panier avec la quantité sélectionnée
         onClose();
     };
 
-    const handleMakeAnOffer= () => {
-        //TODO
+    const handleMakeAnOffer = () => {
+        // TODO: Gérer l'offre
         console.log('Item offer :', itemDetails);
         onClose();
     };
@@ -57,12 +56,7 @@ const BuyAlert = ({ itemId, onClose }) => {
                 {itemDetails && (
                     <>
                         <div className={styles.imageContainer}>
-                            <Image
-                                src={itemDetails.src_image}
-                                height={180}
-                                width={180}
-                                alt="cards"
-                            />
+                            <Image src={itemDetails.src_image} height={180} width={180} alt="cards" />
                         </div>
                         <div className={styles.infoContainer}>
                             <h2 className={styles.alertTitle}>{itemDetails.name}</h2>
@@ -78,13 +72,13 @@ const BuyAlert = ({ itemId, onClose }) => {
                                 />
                             </div>
                             <p className={styles.totalPrice}>Total Price: {totalPrice.toFixed(2)} £</p>
-                            <div className={"btnMC"}>
-                            <button className={styles.alertButton} onClick={handleMakeAnOffer}>
-                                Make an Offer
-                            </button>
-                            <button className={styles.alertButton} onClick={handleAddToCart}>
-                                Add to Cart
-                            </button>
+                            <div className={'btnMC'}>
+                                <button className={styles.alertButton} onClick={handleMakeAnOffer}>
+                                    Make an Offer
+                                </button>
+                                <button className={styles.alertButton} onClick={handleAddToCart}>
+                                    Add to Cart
+                                </button>
                             </div>
                         </div>
                     </>
