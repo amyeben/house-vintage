@@ -7,7 +7,8 @@ import Image from 'next/image';
 import ProductPresentation from '../../../../components/ProductPresentation';
 import FooterUser from '../../../../components/FooterUser';
 import BuyAlert from '../../../../components/BuyAlert';
-import Cart from '../../../../components/Cart'; // Chemin du composant Cart
+import Cart from '../../../../components/Cart';
+
 
 const StoreCustomer = () => {
     const router = useRouter();
@@ -22,27 +23,45 @@ const StoreCustomer = () => {
 
     const [showAlert, setShowAlert] = useState(false);
     const [selectedItemId, setSelectedItemId] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [selectedTitle, setSelectedTitle] = useState(null);
+    const [selectedDescription, setSelectedDescription] = useState(null);
+    const [selectedSrcImage, setSelectedSrcImage] = useState(null);
+    const [selectedPrice, setSelectedPrice] = useState(null);
+    const [quantity, setQuantity] = useState(1);
+
+
     const [showCart, setShowCart] = useState(false);
     const [cartItems, setCartItems] = useState([]);
 
-    const handleAddToCart = (item) => {
+    const handleAddToCart = (item, title, category, description, src_image, price) => {
         const userId = sessionStorage.getItem("user_id");
-        const uniqueItemId = `${item.id}_${userId}`; // Remplacez "userId" par l'ID de l'utilisateur
+        //const uniqueItemId = `${item.id}_${userId}`;
+
+        console.log(item);
+        console.log(src_image);
+        console.log(quantity);
 
         const newCartItem = {
-            ...item,
-            quantity: item.quantity,
-            totalPrice: item.quantity * parseFloat(item.price_items),
-            uniqueItemId,
+            item: item,
+            name: title,
+            category: category,
+            description: description,
+            src_image: src_image,
+            price: price,
+            quantity: quantity,
+            totalPrice: quantity * parseFloat(price),
+
         };
 
-        // Ajouter le nouvel objet cartItem au panier
+        console.log(newCartItem);
+
+        // Utilisez tous les paramètres pour ajouter l'objet au panier
         setCartItems([...cartItems, newCartItem]);
 
         setShowAlert(false);
         setShowCart(true);
     };
-
 
     useEffect(() => {
         const expirationTime = sessionStorage.getItem('expiration_time');
@@ -76,14 +95,14 @@ const StoreCustomer = () => {
             .catch((error) => console.log(error));
     }, []);
 
-    const handleShowAlert = (itemId) => {
+    const handleShowAlert = (itemId, title, category, description, src_image, price) => {
         setSelectedItemId(itemId);
+        setSelectedCategory(category);
+        setSelectedDescription(description);
+        setSelectedTitle(title);
+        setSelectedSrcImage(src_image);
+        setSelectedPrice(price);
         setShowAlert(true);
-    };
-
-    const handleRemoveFromCart = (uniqueItemId) => {
-        const updatedCartItems = cartItems.filter((cartItem) => cartItem.uniqueItemId !== uniqueItemId);
-        setCartItems(updatedCartItems);
     };
 
     const handleClearCart = () => {
@@ -196,7 +215,7 @@ const StoreCustomer = () => {
                                     id={product.id}
                                     articleName={product.name}
                                     articlePrice={product.price_items}
-                                    div={() => handleShowAlert(product.id)}
+                                    div={() => handleShowAlert(product.id, product.name, product.categorie, product.description, product.src_image, product.price_items)}
                                 />
                             ))}
                         </div>
@@ -206,12 +225,14 @@ const StoreCustomer = () => {
                     <BuyAlert
                         itemId={selectedItemId}
                         onClose={() => setShowAlert(false)}
-                        addToCart={handleAddToCart}
+                        onAddtoCart={() => handleAddToCart(selectedItemId, selectedTitle, selectedCategory, selectedDescription, selectedSrcImage, selectedPrice)}
+                        quantity={quantity}
+                        setQuantity={setQuantity}
                     />
                 )}
             </div>
             <FooterUser />
-            {showCart && <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} onClose={() => setShowCart(false)} onClearCart={handleClearCart}/>}
+            {showCart && <Cart cartItems={cartItems} o onClose={() => setShowCart(false)} onClearCart={handleClearCart}/>}
         </>
     );
 };

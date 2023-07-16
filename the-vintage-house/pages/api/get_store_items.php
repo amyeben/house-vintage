@@ -1,7 +1,7 @@
 <?php
 
 header("Access-Control-Allow-Origin: http://localhost:3000, http://localhost:3000/posts/customer/store");
-header("Access-Control-Allow-Headers: GET");
+header("Access-Control-Allow-Headers: GET, POST");
 header("Access-Control-Allow-Methods: Content-Type");
 
 include 'db_connection.php';

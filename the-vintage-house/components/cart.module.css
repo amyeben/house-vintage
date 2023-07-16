@@ -12,34 +12,20 @@
 }
 
 .cartContent {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0px 1px 14px rgba(0, 0, 0, 0.25);
-    max-width: 500px;
     text-align: center;
-    font-family: "BM HANNA_TTF";
-    padding: 19px;
-    justify-content: center;
-    align-content: center;
-    display: flex;
-    top: 50%;
-    left: 50%;
-    margin: 50%;
     width: 500px;
-
+    max-width: 500px;
     top: 50%;
     left: 50%;
-    margin-top: -190px;
-    margin-left: -250px;
+    transform: translate(-50%, -50%);
     position: absolute;
     z-index: 9999;
-    /*! font-family: "BM HANNA_TTF"; */
+    font-family: "BM HANNA_TTF";
     flex-direction: column;
     background-color: #fff;
     border-radius: 5px;
     max-height: 500px;
-    overflow-y: auto;
+    overflow-y: auto; /* Ajout de la propriété overflow-y */
     padding: 20px;
 }
 
@@ -47,6 +33,7 @@
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+
 }
 
 .cartItem {

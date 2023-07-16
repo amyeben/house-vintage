@@ -1,8 +1,10 @@
-// components/Cart.js
 import CartItem from './CartItem';
 import styles from './cart.module.css';
 
 const Cart = ({ cartItems, onRemoveFromCart, onClose, onClearCart }) => {
+    // Calculate the total price of all items in the cart
+    const totalPrice = cartItems.reduce((total, item) => total + item.totalPrice, 0);
+
     const onCloseCartItem = (uniqueItemId) => {
         onRemoveFromCart(uniqueItemId);
     };
@@ -15,15 +17,18 @@ const Cart = ({ cartItems, onRemoveFromCart, onClose, onClearCart }) => {
                 {cartItems.length > 0 ? (
                     cartItems.map((item) => (
                         <CartItem
-                            key={item.uniqueItemId} // Utilisez uniqueItemId comme clé
+                            key={item.uniqueItemId}
                             item={item}
                             onRemoveFromCart={onRemoveFromCart}
-                            onCloseCartItem={onCloseCartItem} // Nouvelle fonction onCloseCartItem
+                            onCloseCartItem={onCloseCartItem}
                         />
                     ))
                 ) : (
                     <p>Your cart is empty.</p>
                 )}
+
+                <p>Total Price: {totalPrice.toFixed(2)} £</p> {/* Display the total price */}
+
                 <div className={styles.cartButtons}>
                     <button className={styles.cartButton} onClick={onClose}>
                         Close
@@ -36,4 +41,5 @@ const Cart = ({ cartItems, onRemoveFromCart, onClose, onClearCart }) => {
         </div>
     );
 };
+
 export default Cart;
