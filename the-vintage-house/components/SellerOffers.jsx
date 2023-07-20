@@ -1,29 +1,29 @@
 import styles from "./selleroffers.module.css"
 
-const SellerOffers = (children) => {
+const SellerOffers = ( {children, onAccept, onRefuse, customerEmail, date, productName, offernumber, offerquantity, offerPrice}) => {
 
     return(<>
         <span className={styles.offersTitle}>OFFER</span>
         <div className={styles.selleroffers}>
             <div className={styles.of}>
                 <div className={styles.of1}>
-                    <span>From: {children.customerEmail}</span>
-                    <span>Date: {children.date}</span>
-                    <span>Product: {children.productName}</span>
+                    <span>From: {customerEmail}</span>
+                    <span>Date: {date}</span>
+                    <span>Product: {productName}</span>
                 </div>
                 <div className={styles.of2}>
-                    <span>Offer n°{children.offernumber}/5</span>
-                    <span>Quantity: {children.offerquantity}</span>
-                    <span>Price: {children.offerPrice}</span>
+                    <span>Offer n°{offernumber}/5</span>
+                    <span>Quantity: {offerquantity}</span>
+                    <span>Price: {offerPrice}£</span>
                 </div>
             </div>
 
         </div>
         <div className={styles.btnAR}>
-            <button className={styles.buttonAccept} value={"ACCEPT"}>
+            <button className={styles.buttonAccept} value={"ACCEPT"} onClick={onAccept}>
                 I ACCEPT
             </button>
-            <button className={styles.buttonRefuse} value={"REFUSE"}>
+            <button className={styles.buttonRefuse} value={"REFUSE"} onClick={onRefuse}>
                 I REFUSE
             </button>
         </div>

@@ -2,10 +2,10 @@ import Link from 'next/link';
 import styles from './productpresentation.module.css';
 import Image from "next/image";
 
-const ProductPresentationAuction = (children) => {
+const ProductPresentationAuction = ({srcImage, id, articleName, articlePrice, action}) => {
 
     const getIdProductToCart= () => {
-        console.log(children.id);
+        console.log(id);
     };
 
 
@@ -14,16 +14,16 @@ const ProductPresentationAuction = (children) => {
         <>
             <div className={styles.cards}>
                 <Image
-                    src={children.srcImage}
-                    id={children.id}
+                    src={srcImage}
+                    id={id}
                     height={100}
                     width={100}
                     alt={"cards"}
 
                 />
-                <span className={"articleName"}> {children.articleName}</span>
-                <span className={"articlePrice"}>Last Offer: {children.articlePrice}</span>
-                <button className={styles.buttonBuy} value={"MAKE AN OFFER"} onClick={children.action}>MAKE AN OFFER</button>
+                <span className={"articleName"}> {articleName}</span>
+                <span className={"articlePrice"}>Highest Offer: {articlePrice}</span>
+                <button className={styles.buttonBuy} value={"MAKE AN OFFER"} onClick={action}>MAKE AN OFFER</button>
             </div>
         </>
     );

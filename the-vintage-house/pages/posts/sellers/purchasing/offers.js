@@ -4,15 +4,21 @@ import Image from "next/image";
 import FooterSellers from "../../../../components/FooterSellers";
 import SellerOffers from "../../../../components/SellerOffers";
 import {useRouter} from "next/dist/client/compat/router";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 const Offers = () => {
 
     const router = useRouter();
+    const [sellerOffer, setSellerOffer] = useState([]);
+    const [refusedOffers, setRefusedOffers] = useState([]);
+    const [sellerId, setSellerId] = useState(-1);
 
     useEffect(() => {
         const expirationTime = sessionStorage.getItem('expiration_time');
         const userType = sessionStorage.getItem('user_type');
+        const seller_id = sessionStorage.getItem('user_id');
+        setSellerId(seller_id);
 
         if (!userType || (expirationTime && Date.now() > parseInt(expirationTime))) {
             // La session a expiré ou l'utilisateur n'est pas connecté, rediriger vers la page de connexion
@@ -36,8 +42,43 @@ const Offers = () => {
                     router.push('/error');
                     break;
             }
+
+            axios
+                .post("http://localhost:8888/get_seller_offers.php", { seller_id : seller_id })
+                .then((response) => {
+                    const seller_offers = response.data;
+                    console.log(seller_offers);
+                    setSellerOffer(seller_offers);
+                })
+                .catch((error) => console.log(error));
         }
     }, []);
+
+    const handleRefuseOffer = async (offerId) => {
+    try {
+        await axios.delete(`http://localhost:8888/delete_offers.php?id=${offerId}`);
+        setSellerOffer((prevSellerOffer) => prevSellerOffer.filter((offer) => offer.id !== offerId));}
+        catch (error){
+            console.error("An error occurred while deleting the item:", error);
+        }
+    };
+
+    const handleAcceptOffer = async (offerId, offerPrice, email, productName) => {
+        try {
+            await axios.post("http://localhost:8888/payement.php", {
+
+                offerId,
+                offerPrice,
+                email,
+
+            });
+            await axios.delete(`http://localhost:8888/delete_offers.php?id=${offerId}`);
+            setSellerOffer((prevSellerOffer) => prevSellerOffer.filter((offer) => offer.id !== offerId));}
+        catch (error){
+            console.error("An error occurred while deleting the item:", error);
+        }
+
+    }
 
 
     return(<>
@@ -54,46 +95,21 @@ const Offers = () => {
                 <span>ACCEPT OR REFUSE THESE OFFERS !</span>
             </div>
             <div className={"offersSeller"}>
-                <div className="card">
-                <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
-                </div>
-                <div className="card">
-                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
-                </div>
-                <div className="card">
-                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
-                </div>
-                <div className="card">
-                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
-                </div>
-                <div className="card">
-                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
-                </div>
-                <div className="card">
-                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
-                </div>
-                <div className="card">
-                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
-                </div>
-                <div className="card">
-                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
-                </div>
-                <div className="card">
-                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
-                </div>
-                <div className="card">
-                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
-                </div>
-                <div className="card">
-                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
-                </div>
-                <div className="card">
-                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
-                </div>
-                <div className="card">
-                    <SellerOffers customerEmail={"ebenamy@yahoo.fr"} date={"08/09/2023"} productName={"Miraculous ED1"} offernumber={'4'} offerquantity={20} offerPrice={"120£"} />
-                </div>
+                {sellerOffer.map((offer) => (
+                    <div className="card" key={offer.id}>
+                        <SellerOffers
+                            customerEmail={offer.customer_email}
+                            date={offer.date}
+                            productName={offer.product_name}
+                            offernumber={offer.number_offer}
+                            offerquantity={offer.quantity}
+                            offerPrice={offer.price_offer}
+                            onRefuse={() => handleRefuseOffer(offer.id)}
+                            onAccept={() => handleAcceptOffer(offer.id, offer.price_offer, offer.customer_email, offer.product_name)}
 
+                        />
+                    </div>
+                ))}
             </div>
 
         </div>

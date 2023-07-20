@@ -135,7 +135,7 @@ export default function Customer() {
                             id={item.id}
                             articleName={item.name}
                             articlePrice={item.price_items}
-                            div={() => handleShowAlert(item.id)}
+                            div={() => router.push("/posts/customer/store")}
                         />
                     ))}
                 </div>
@@ -148,7 +148,7 @@ export default function Customer() {
                             id={item.id}
                             articleName={item.name}
                             articlePrice={item.price_items}
-                            div={() => handleShowAlert(item.id)}
+                            div={() => router.push("/posts/customer/store")}
                         />
                     ))}
                 </div>

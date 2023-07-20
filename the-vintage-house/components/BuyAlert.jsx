@@ -5,7 +5,7 @@ import styles from "./buyalert.module.css";
 
 
 
-const BuyAlert = ({ itemId, onClose, onAddtoCart, quantity, setQuantity }) => {
+const BuyAlert = ({ itemId, onClose, onAddtoCart, quantity, setQuantity, onMakeAnOffer }) => {
 
 
     const [itemDetails, setItemDetails] = useState(null);
@@ -39,7 +39,7 @@ const BuyAlert = ({ itemId, onClose, onAddtoCart, quantity, setQuantity }) => {
     const handleMakeAnOffer= () => {
         // TODO: Vous pouvez implémenter cette fonction ici
         console.log('Item offer:', itemDetails);
-        onClose();
+
     };
 
     // Calculate the total price based on the quantity
@@ -86,7 +86,7 @@ const BuyAlert = ({ itemId, onClose, onAddtoCart, quantity, setQuantity }) => {
                             </div>
                             <p className={styles.totalPrice}>Total Price: {totalPrice.toFixed(2)} £</p>
                             <div className={"btnMC"}>
-                                <button className={styles.alertButton} onClick={handleMakeAnOffer}>
+                                <button className={styles.alertButton} onClick={onMakeAnOffer}>
                                     Make an Offer
                                 </button>
                                 <button className={styles.alertButton}

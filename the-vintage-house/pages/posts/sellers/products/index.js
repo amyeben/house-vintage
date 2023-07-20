@@ -7,6 +7,7 @@ import {useRouter} from "next/dist/client/compat/router";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import AddItemForm from "../../../../components/AddItemForm";
+import AuctionAddForm from "../../../../components/AuctionAddForm";
 
 export default function Sellers() {
 
