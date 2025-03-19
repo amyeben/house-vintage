@@ -1,17 +1,59 @@
-# The Vintage House
+# 🏠 House Vintage - Application de Gestion
 
-In this project, the goal is to create like a website similar with Ebay. Our store is going to sell some vintage product.
+## 📌 Description
+**House Vintage** est une application web conçue pour gérer un catalogue d'articles vintages. Elle permet aux utilisateurs d'explorer et d'acheter des objets uniques tout en fournissant une gestion centralisée des stocks et des commandes.
 
-### DB DIAGRAM
+## 🚀 Fonctionnalités
+- ✅ Gestion des articles et des catégories 📦
+- ✅ Ajout, modification et suppression de produits 🛠️
+- ✅ Gestion des commandes et des utilisateurs 🛒
+- ✅ Connexion à une base de données SQL 📊
+- ✅ Interface web dynamique (Node.js, Express ou autre)
 
-![](dbdiagram.png)
+## 🏗️ Architecture du projet
+- 📂 **Backend (Node.js/Express)** - Gestion des routes et API
+- 📂 **Base de données (SQL)** - Stockage des articles et commandes
+- 📂 **Frontend** (si applicable) - Interface utilisateur (React, Vue, ou autre ?)
+- 📂 `package.json` - Dépendances du projet
+- 📂 `items.sql` - Script SQL pour initialiser la base de données
+- 📂 `dbdiagram.png` - Schéma de la base de données
 
-### DESIGN 
+## 🔧 Installation & Exécution
 
-![img.png](img.png)
- 
-#### LINK 
+### 1️⃣ Cloner le repository
+```bash
+git clone https://github.com/amyeben/house-vintage.git
+cd house-vintage
+```
 
-SELLER INTERFACE : https://www.figma.com/file/VdXD3Lhl54Y77Scmu9jQpT/SELLER-INTERFACE-(Copy)?type=design&node-id=0%3A1&mode=design&t=1Q6jFPiQPPU0FnyG-1
-ADMIN INTERFACE : https://www.figma.com/file/U1NPJ1begQxiEg5dC7O7Pk/ADMIN-INTERFACE?type=design&node-id=1%3A104&mode=design&t=ljkVOjGcjPyqpB9P-1
-CUSTOMER INTERFACE : https://www.figma.com/file/eFw0R2ZGTkXKoSDJO7T55g/CUSTOMER-INTERFACE?type=design&node-id=0%3A1&mode=design&t=zCdBoJT1rFDBXUZr-1
+### 2️⃣ Installer les dépendances
+```bash
+npm install
+```
+
+### 3️⃣ Configurer la base de données
+- Importer `items.sql` dans votre base de données SQL.
+- Vérifier la configuration du fichier `.env` (ajouter les accès à la base SQL si nécessaire).
+
+### 4️⃣ Démarrer le serveur
+```bash
+npm start
+```
+
+## 🌐 API Endpoints (Exemples)
+| Méthode  | Endpoint        | Description                |
+|----------|----------------|----------------------------|
+| GET      | `/items`        | Liste des articles         |
+| POST     | `/items`        | Ajouter un nouvel article  |
+| PUT      | `/items/:id`    | Modifier un article        |
+| DELETE   | `/items/:id`    | Supprimer un article       |
+
+## 👨‍💻 Technologies utilisées
+- **Node.js + Express.js** - Backend API
+- **SQL (MySQL/PostgreSQL ?)** - Base de données
+- **Possiblement un framework frontend (React/Vue ?)**
+
+## 📬 Contact
+**Auteur** : Amy Eben Sang Kotta  
+📌 Retrouvez-moi sur [GitHub](https://github.com/amyeben) et [LinkedIn](https://linkedin.com/in/amy-eben) !
+
