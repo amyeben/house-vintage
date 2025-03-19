@@ -1,19 +1,19 @@
 # 🏠 House Vintage - Application de Gestion
 
 ## 📌 Description
-**House Vintage** est une application web conçue pour gérer un catalogue d'articles vintages. Elle permet aux utilisateurs d'explorer et d'acheter des objets uniques tout en fournissant une gestion centralisée des stocks et des commandes.
+**House Vintage** est une application web multi-utilisateur (admin, vendeurs, client) conçue pour gérer un catalogue d'articles vintages. Elle permet aux utilisateurs d'explorer et d'acheter des objets uniques tout en fournissant une gestion centralisée des stocks et des commandes.
 
 ## 🚀 Fonctionnalités
 - ✅ Gestion des articles et des catégories 📦
 - ✅ Ajout, modification et suppression de produits 🛠️
 - ✅ Gestion des commandes et des utilisateurs 🛒
 - ✅ Connexion à une base de données SQL 📊
-- ✅ Interface web dynamique (NextJS)
+- ✅ Interfaces web dynamique (NextJS)
 
 ## 🏗️ Architecture du projet
-- 📂 **Backend (PHP)** - Gestion des routes et API
-- 📂 **Base de données (SQL)** - Stockage des articles et commandes
-- 📂 **Frontend** (si applicable) - Interface utilisateur (React, Vue, ou autre ?)
+- 📂 **Backend : `./the-vintage-house/pages/api/`** - Gestion des routes et API
+- 📂 **Base de données : MYSQL  `./THE VINTAGE HOUSE.sql`** - Stockage des articles et commandes
+- 📂 **Frontend : NextJS**  - 3 Interfaces utilisateur (Admin, Vendeurs, Clients)
 - 📂 `package.json` - Dépendances du projet
 - 📂 `items.sql` - Script SQL pour initialiser la base de données
 - 📂 `dbdiagram.png` - Schéma de la base de données
