@@ -8,10 +8,10 @@
 - ✅ Ajout, modification et suppression de produits 🛠️
 - ✅ Gestion des commandes et des utilisateurs 🛒
 - ✅ Connexion à une base de données SQL 📊
-- ✅ Interface web dynamique (Node.js, Express ou autre)
+- ✅ Interface web dynamique (NextJS)
 
 ## 🏗️ Architecture du projet
-- 📂 **Backend (Node.js/Express)** - Gestion des routes et API
+- 📂 **Backend (PHP)** - Gestion des routes et API
 - 📂 **Base de données (SQL)** - Stockage des articles et commandes
 - 📂 **Frontend** (si applicable) - Interface utilisateur (React, Vue, ou autre ?)
 - 📂 `package.json` - Dépendances du projet
@@ -49,9 +49,10 @@ npm start
 | DELETE   | `/items/:id`    | Supprimer un article       |
 
 ## 👨‍💻 Technologies utilisées
-- **Node.js + Express.js** - Backend API
-- **SQL (MySQL/PostgreSQL ?)** - Base de données
-- **Possiblement un framework frontend (React/Vue ?)**
+- **PHP** - Backend API
+- **SQL (MySQL/PostgreSQL)
+- ** - Base de données
+- **Possiblement un framework frontend (NextJS)**
 
 ## 📬 Contact
 **Auteur** : Amy Eben Sang Kotta  
