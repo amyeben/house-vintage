@@ -50,8 +50,7 @@ npm start
 
 ## 👨‍💻 Technologies utilisées
 - **PHP** - Backend API
-- **SQL (MySQL/PostgreSQL)
-- ** - Base de données
+- **SQL** (MySQL/PostgreSQL)
 - **Possiblement un framework frontend (NextJS)**
 
 ## 📬 Contact
